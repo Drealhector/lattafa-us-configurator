@@ -1,46 +1,46 @@
 import { useState } from "react";
-import { Menu, Search, ShoppingCart, User, X, ChevronDown } from "lucide-react";
+import { Menu, Search, ShoppingCart, User, X, ChevronDown, ChevronLeft, ChevronRight, ArrowUpRight } from "lucide-react";
 import { Button } from "./ui/button";
-import TrendingCarousel from "./TrendingCarousel";
-import ProductCard from "./ProductCard";
 import lattafaLogo from "@/assets/lattafa-logo.png";
 import sapphireOud from "@/assets/sapphire-oud.jpg";
 import desertFalcon from "@/assets/desert-falcon.jpg";
 import spiceCaravan from "@/assets/spice-caravan.jpg";
 import roseMirage from "@/assets/rose-mirage.jpg";
 import candyNoir from "@/assets/candy-noir.jpg";
-import pinkDusk from "@/assets/pink-dusk.jpg";
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [trendingIndex, setTrendingIndex] = useState(0);
 
   const trendingProducts = [
-    { name: "Sapphire Oud", image: sapphireOud, vendor: "Lattafa US", price: "$49.99", status: "sold out" },
-    { name: "Desert Falcon", image: desertFalcon, vendor: "Lattafa US", price: "From $14.99" },
-    { name: "Spice Caravan", image: spiceCaravan, vendor: "Lattafa US", price: "$49.99" },
-    { name: "Rose Mirage", image: roseMirage, vendor: "Lattafa US", price: "$44.99" },
-    { name: "Candy Noir", image: candyNoir, vendor: "Lattafa US", price: "From $29.99" },
+    { name: "Sapphire Oud", image: sapphireOud, vendor: "Lattafa", price: "$49.99 USD", status: "sold out" },
+    { name: "Desert Falcon", image: desertFalcon, vendor: "Lattafa", price: "From $14.99 USD" },
+    { name: "Spice Caravan", image: spiceCaravan, vendor: "Lattafa", price: "$49.99 USD" },
+    { name: "Rose Mirage", image: roseMirage, vendor: "Lattafa", price: "$44.99 USD" },
+    { name: "Candy Noir", image: candyNoir, vendor: "Lattafa", price: "From $29.99 USD" },
   ];
 
-  const placeholderProducts = [
-    { name: "Art of Universe", image: sapphireOud, vendor: "Lattafa US", price: "$39.99" },
-    { name: "Atheeri", image: desertFalcon, vendor: "Lattafa US", price: "$44.99" },
-    { name: "Khamrah Dukhan", image: spiceCaravan, vendor: "Lattafa US", price: "$49.99" },
-    { name: "Victoria", image: roseMirage, vendor: "Lattafa US", price: "$42.99" },
+  const dropdownProducts = [
+    { name: "Art of Universe", image: sapphireOud },
+    { name: "Atheeri", image: desertFalcon },
+    { name: "Khamrah Dukhan", image: spiceCaravan },
+    { name: "Victoria", image: roseMirage },
   ];
+
+  const totalPages = trendingProducts.length;
+  const currentPage = trendingIndex + 1;
 
   return (
-    <header className="sticky top-0 z-50 bg-background">
+    <header className="sticky top-0 z-50 bg-background shadow-sm">
       {/* Animated Top Bar */}
-      <div className="bg-primary text-primary-foreground py-2 overflow-hidden relative">
-        <div className="flex animate-[scroll-left_20s_linear_infinite] whitespace-nowrap">
-          <span className="inline-block px-8 text-sm font-medium">FREE Shipping On Orders Over USD $60</span>
-          <span className="inline-block px-8 text-sm font-medium">FREE Shipping On Orders Over USD $60</span>
-          <span className="inline-block px-8 text-sm font-medium">FREE Shipping On Orders Over USD $60</span>
-          <span className="inline-block px-8 text-sm font-medium">FREE Shipping On Orders Over USD $60</span>
-          <span className="inline-block px-8 text-sm font-medium">FREE Shipping On Orders Over USD $60</span>
-          <span className="inline-block px-8 text-sm font-medium">FREE Shipping On Orders Over USD $60</span>
+      <div className="bg-primary text-primary-foreground py-2.5 overflow-hidden relative">
+        <div className="flex animate-[scroll-left_25s_linear_infinite]">
+          {[...Array(8)].map((_, i) => (
+            <span key={i} className="inline-block px-12 text-sm font-medium whitespace-nowrap">
+              FREE Shipping On Orders Over USD $60
+            </span>
+          ))}
         </div>
       </div>
 
@@ -58,123 +58,217 @@ const Header = () => {
             </button>
 
             {/* Logo */}
-            <div className="flex-1 lg:flex-none flex justify-center lg:justify-start">
-              <a href="/" className="flex items-center">
-                <img src={lattafaLogo} alt="Lattafa" className="h-12" />
+            <div className="flex-shrink-0">
+              <a href="/" className="block">
+                <img src={lattafaLogo} alt="Lattafa" className="h-14 w-auto" />
               </a>
             </div>
 
             {/* Desktop Navigation */}
             <nav className="hidden lg:flex items-center space-x-8 flex-1 justify-center">
+              {/* SHOP Dropdown */}
               <div
                 className="relative"
                 onMouseEnter={() => setActiveDropdown("shop")}
                 onMouseLeave={() => setActiveDropdown(null)}
               >
-                <button className="text-sm font-medium hover:text-muted-foreground transition-colors flex items-center gap-1 border-b-2 border-transparent hover:border-primary">
+                <button className="text-sm font-medium tracking-wide hover:opacity-70 transition-opacity flex items-center gap-1">
                   SHOP
-                  <ChevronDown size={16} />
+                  <ChevronDown size={14} />
                 </button>
                 {activeDropdown === "shop" && (
-                  <div className="absolute left-0 top-full mt-2 w-[800px] bg-background border rounded-sm shadow-lg p-6 z-50">
-                    <div className="grid grid-cols-[auto_1fr_1fr_1fr_300px] gap-8">
-                      <div className="space-y-2">
-                        <a href="/collections/best-sellers" className="block py-1.5 text-sm hover:underline font-medium">Best Sellers</a>
-                        <a href="/collections/new-arrivals" className="block py-1.5 text-sm hover:underline font-medium">New Arrivals</a>
+                  <div className="absolute left-0 top-full mt-4 w-[850px] bg-background border shadow-xl z-50 animate-fade-in">
+                    <div className="grid grid-cols-[auto_auto_auto_auto_1fr] gap-8 p-8">
+                      {/* Column 1 */}
+                      <div className="space-y-3 min-w-[120px]">
+                        <a href="/collections/best-sellers" className="block text-sm hover:underline font-medium">Best Sellers</a>
+                        <a href="/collections/new-arrivals" className="block text-sm hover:underline font-medium">New Arrivals</a>
                       </div>
-                      <div>
-                        <h3 className="font-semibold text-sm mb-2">By Category</h3>
-                        <a href="/collections/all" className="block py-1.5 text-sm hover:underline">All Fragrances</a>
-                        <a href="/collections/women" className="block py-1.5 text-sm hover:underline">Women's Fragrances</a>
-                        <a href="/collections/men" className="block py-1.5 text-sm hover:underline">Men's Fragrances</a>
-                        <a href="/collections/unisex" className="block py-1.5 text-sm hover:underline">Unisex Fragrances</a>
+                      
+                      {/* Column 2 - By Category */}
+                      <div className="min-w-[160px]">
+                        <h3 className="font-semibold text-sm mb-3">By Category</h3>
+                        <div className="space-y-3">
+                          <a href="/collections/all" className="block text-sm hover:underline">All Fragrances</a>
+                          <a href="/collections/women" className="block text-sm hover:underline">Women's Fragrances</a>
+                          <a href="/collections/men" className="block text-sm hover:underline">Men's Fragrances</a>
+                          <a href="/collections/unisex" className="block text-sm hover:underline">Unisex Fragrances</a>
+                        </div>
                       </div>
-                      <div>
-                        <h3 className="font-semibold text-sm mb-2">By Type</h3>
-                        <a href="/collections/edp" className="block py-1.5 text-sm hover:underline">Eau de Parfum (EDP)</a>
-                        <a href="/collections/deodorant" className="block py-1.5 text-sm hover:underline">Deodorant</a>
-                        <a href="/collections/air-freshener" className="block py-1.5 text-sm hover:underline">Air Freshener</a>
-                        <a href="/collections/spray" className="block py-1.5 text-sm hover:underline">All Over Spray</a>
+                      
+                      {/* Column 3 - By Type */}
+                      <div className="min-w-[160px]">
+                        <h3 className="font-semibold text-sm mb-3">By Type</h3>
+                        <div className="space-y-3">
+                          <a href="/collections/edp" className="block text-sm hover:underline">Eau de Parfum (EDP)</a>
+                          <a href="/collections/deodorant" className="block text-sm hover:underline">Deodorant</a>
+                          <a href="/collections/air-freshener" className="block text-sm hover:underline">Air Freshener</a>
+                          <a href="/collections/spray" className="block text-sm hover:underline">All Over Spray</a>
+                        </div>
                       </div>
-                      <div>
-                        <h3 className="font-semibold text-sm mb-2">By Brand</h3>
-                        <a href="/collections/lattafa" className="block py-1.5 text-sm hover:underline">Lattafa</a>
-                        <a href="/collections/lattafa-pride" className="block py-1.5 text-sm hover:underline">Lattafa Pride</a>
+                      
+                      {/* Column 4 - By Brand */}
+                      <div className="min-w-[120px]">
+                        <h3 className="font-semibold text-sm mb-3">By Brand</h3>
+                        <div className="space-y-3">
+                          <a href="/collections/lattafa" className="block text-sm hover:underline">Lattafa</a>
+                          <a href="/collections/lattafa-pride" className="block text-sm hover:underline">Lattafa Pride</a>
+                        </div>
                       </div>
-                      <div className="border-l pl-6">
-                        <TrendingCarousel products={trendingProducts} />
+                      
+                      {/* Trend This Week Carousel */}
+                      <div className="border-l pl-8 min-w-[280px]">
+                        <div className="flex items-center justify-between mb-4">
+                          <h3 className="font-serif text-base">Trend This Week</h3>
+                          <div className="flex items-center gap-2">
+                            <span className="text-sm text-muted-foreground">{currentPage}/{totalPages}</span>
+                            <button
+                              onClick={() => setTrendingIndex(Math.max(0, trendingIndex - 1))}
+                              disabled={trendingIndex === 0}
+                              className="disabled:opacity-30"
+                              aria-label="Previous"
+                            >
+                              <ChevronLeft size={18} />
+                            </button>
+                            <button
+                              onClick={() => setTrendingIndex(Math.min(totalPages - 1, trendingIndex + 1))}
+                              disabled={trendingIndex === totalPages - 1}
+                              className="disabled:opacity-30"
+                              aria-label="Next"
+                            >
+                              <ChevronRight size={18} />
+                            </button>
+                          </div>
+                        </div>
+                        <div className="grid grid-cols-2 gap-4">
+                          {trendingProducts.slice(trendingIndex, trendingIndex + 2).map((product, idx) => (
+                            <div key={idx} className="group cursor-pointer">
+                              <div className="relative aspect-square overflow-hidden bg-muted rounded mb-2">
+                                <img
+                                  src={product.image}
+                                  alt={product.name}
+                                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                                />
+                                {product.status === "sold out" && (
+                                  <div className="absolute inset-0 bg-background/80 flex items-center justify-center">
+                                    <span className="text-xs font-medium">SOLD OUT</span>
+                                  </div>
+                                )}
+                              </div>
+                              <p className="text-xs text-muted-foreground mb-1">{product.vendor}</p>
+                              <h4 className="text-sm font-medium mb-1 leading-tight">{product.name}</h4>
+                              <p className="text-sm font-semibold">{product.price}</p>
+                            </div>
+                          ))}
+                        </div>
                       </div>
                     </div>
                   </div>
                 )}
               </div>
 
+              {/* NEW ARRIVALS Dropdown */}
               <div
                 className="relative"
                 onMouseEnter={() => setActiveDropdown("new-arrivals")}
                 onMouseLeave={() => setActiveDropdown(null)}
               >
-                <button className="text-sm font-medium hover:text-muted-foreground transition-colors flex items-center gap-1 border-b-2 border-transparent hover:border-primary">
+                <button className="text-sm font-medium tracking-wide hover:opacity-70 transition-opacity flex items-center gap-1">
                   NEW ARRIVALS
-                  <ChevronDown size={16} />
+                  <ChevronDown size={14} />
                 </button>
                 {activeDropdown === "new-arrivals" && (
-                  <div className="absolute left-0 top-full mt-2 w-[700px] bg-background border rounded-sm shadow-lg p-6 z-50">
-                    <div className="grid grid-cols-4 gap-4">
-                      {placeholderProducts.map((product, idx) => (
-                        <ProductCard key={idx} {...product} compact />
+                  <div className="absolute left-1/2 -translate-x-1/2 top-full mt-4 w-[900px] bg-background border shadow-xl p-8 z-50 animate-fade-in">
+                    <div className="grid grid-cols-4 gap-6">
+                      {dropdownProducts.map((product, idx) => (
+                        <div key={idx} className="group cursor-pointer text-center">
+                          <div className="relative aspect-square overflow-hidden bg-muted rounded-lg mb-3">
+                            <img
+                              src={product.image}
+                              alt={product.name}
+                              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            />
+                          </div>
+                          <h4 className="text-sm font-serif mb-2">{product.name}</h4>
+                          <button className="mx-auto w-10 h-10 rounded-full border-2 border-foreground flex items-center justify-center hover:bg-foreground hover:text-background transition-all">
+                            <ArrowUpRight size={18} />
+                          </button>
+                        </div>
                       ))}
                     </div>
                   </div>
                 )}
               </div>
 
+              {/* BEST SELLERS Dropdown */}
               <div
                 className="relative"
                 onMouseEnter={() => setActiveDropdown("best-sellers")}
                 onMouseLeave={() => setActiveDropdown(null)}
               >
-                <button className="text-sm font-medium hover:text-muted-foreground transition-colors flex items-center gap-1 border-b-2 border-transparent hover:border-primary">
+                <button className="text-sm font-medium tracking-wide hover:opacity-70 transition-opacity flex items-center gap-1">
                   BEST SELLERS
-                  <ChevronDown size={16} />
+                  <ChevronDown size={14} />
                 </button>
                 {activeDropdown === "best-sellers" && (
-                  <div className="absolute left-0 top-full mt-2 w-[700px] bg-background border rounded-sm shadow-lg p-6 z-50">
-                    <div className="grid grid-cols-4 gap-4">
-                      {placeholderProducts.map((product, idx) => (
-                        <ProductCard key={idx} {...product} compact />
+                  <div className="absolute left-1/2 -translate-x-1/2 top-full mt-4 w-[900px] bg-background border shadow-xl p-8 z-50 animate-fade-in">
+                    <div className="grid grid-cols-4 gap-6">
+                      {dropdownProducts.map((product, idx) => (
+                        <div key={idx} className="group cursor-pointer text-center">
+                          <div className="relative aspect-square overflow-hidden bg-muted rounded-lg mb-3">
+                            <img
+                              src={product.image}
+                              alt={product.name}
+                              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            />
+                          </div>
+                          <h4 className="text-sm font-serif mb-2">{product.name}</h4>
+                          <button className="mx-auto w-10 h-10 rounded-full border-2 border-foreground flex items-center justify-center hover:bg-foreground hover:text-background transition-all">
+                            <ArrowUpRight size={18} />
+                          </button>
+                        </div>
                       ))}
                     </div>
                   </div>
                 )}
               </div>
 
+              {/* COLLECTIONS Dropdown */}
               <div
                 className="relative"
                 onMouseEnter={() => setActiveDropdown("collections")}
                 onMouseLeave={() => setActiveDropdown(null)}
               >
-                <button className="text-sm font-medium hover:text-muted-foreground transition-colors flex items-center gap-1 border-b-2 border-transparent hover:border-primary">
+                <button className="text-sm font-medium tracking-wide hover:opacity-70 transition-opacity flex items-center gap-1">
                   COLLECTIONS
-                  <ChevronDown size={16} />
+                  <ChevronDown size={14} />
                 </button>
                 {activeDropdown === "collections" && (
-                  <div className="absolute left-0 top-full mt-2 w-[700px] bg-background border rounded-sm shadow-lg p-6 z-50">
-                    <div className="grid grid-cols-4 gap-4">
-                      {placeholderProducts.map((product, idx) => (
-                        <ProductCard key={idx} {...product} compact />
+                  <div className="absolute left-1/2 -translate-x-1/2 top-full mt-4 w-[900px] bg-background border shadow-xl p-8 z-50 animate-fade-in">
+                    <div className="grid grid-cols-4 gap-6">
+                      {dropdownProducts.map((product, idx) => (
+                        <div key={idx} className="group cursor-pointer text-center">
+                          <div className="relative aspect-square overflow-hidden bg-muted rounded-lg mb-3">
+                            <img
+                              src={product.image}
+                              alt={product.name}
+                              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            />
+                          </div>
+                          <h4 className="text-sm font-serif mb-2">{product.name}</h4>
+                          <button className="mx-auto w-10 h-10 rounded-full border-2 border-foreground flex items-center justify-center hover:bg-foreground hover:text-background transition-all">
+                            <ArrowUpRight size={18} />
+                          </button>
+                        </div>
                       ))}
                     </div>
                   </div>
                 )}
               </div>
-
-              <a href="/pages/about" className="text-sm font-medium hover:text-muted-foreground transition-colors border-b-2 border-transparent hover:border-primary">About Us</a>
-              <a href="/pages/contact" className="text-sm font-medium hover:text-muted-foreground transition-colors border-b-2 border-transparent hover:border-primary">Contact Us</a>
             </nav>
 
             {/* Icons - Horizontal Layout */}
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-1">
               <Button variant="ghost" size="icon" aria-label="Search">
                 <Search size={20} />
               </Button>
@@ -183,7 +277,7 @@ const Header = () => {
               </Button>
               <Button variant="ghost" size="icon" aria-label="Cart" className="relative">
                 <ShoppingCart size={20} />
-                <span className="absolute -top-1 -right-1 bg-primary text-primary-foreground text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                <span className="absolute -top-1 -right-1 bg-foreground text-background text-xs rounded-full w-5 h-5 flex items-center justify-center font-medium">
                   0
                 </span>
               </Button>
@@ -196,17 +290,10 @@ const Header = () => {
       {isMobileMenuOpen && (
         <div className="lg:hidden border-b bg-background">
           <nav className="container mx-auto px-4 py-4 space-y-4">
-            <div>
-              <button className="font-medium text-sm mb-2">Shop</button>
-              <div className="pl-4 space-y-2">
-                <a href="/collections/best-sellers" className="block text-sm text-muted-foreground">Best Sellers</a>
-                <a href="/collections/new-arrivals" className="block text-sm text-muted-foreground">New Arrivals</a>
-                <a href="/collections/all" className="block text-sm text-muted-foreground">All Fragrances</a>
-              </div>
-            </div>
+            <a href="/collections/shop" className="block font-medium text-sm">Shop</a>
+            <a href="/collections/new-arrivals" className="block font-medium text-sm">New Arrivals</a>
+            <a href="/collections/best-sellers" className="block font-medium text-sm">Best Sellers</a>
             <a href="/collections" className="block font-medium text-sm">Collections</a>
-            <a href="/pages/about" className="block font-medium text-sm">About Us</a>
-            <a href="/pages/contact" className="block font-medium text-sm">Contact Us</a>
           </nav>
         </div>
       )}

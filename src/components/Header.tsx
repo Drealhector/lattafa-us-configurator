@@ -51,24 +51,24 @@ const Header = () => {
             {/* Logo - Left Side */}
             <div className="flex-shrink-0">
               <a href="/" className="block">
-                <img src={lattafaLogo} alt="Lattafa Perfumes" className="h-16 w-auto" />
+                <img src={lattafaLogo} alt="Lattafa Perfumes" className="h-20 w-auto" />
               </a>
             </div>
 
             {/* Desktop Navigation - Center */}
-            <nav className="hidden lg:flex items-center space-x-8 flex-1 justify-center">
+            <nav className="flex items-center space-x-8 flex-1 justify-center">
               {/* SHOP Dropdown */}
               <div
                 className="relative"
                 onMouseEnter={() => setActiveDropdown("shop")}
                 onMouseLeave={() => setActiveDropdown(null)}
               >
-                <button className="text-sm font-semibold tracking-wide hover:text-[#D4AF37] transition-colors flex items-center gap-1">
+                <button className="text-sm font-semibold tracking-wide hover:text-[#D4AF37] transition-colors flex items-center gap-1 text-black">
                   SHOP
                   <ChevronDown size={14} className="text-gray-500" />
                 </button>
                 {activeDropdown === "shop" && (
-                  <div className="absolute left-1/2 -translate-x-1/2 top-full mt-0 w-[900px] bg-white border shadow-2xl z-[100] animate-[slide-down_0.3s_ease-out]">
+                  <div className="absolute left-1/2 -translate-x-1/2 top-full mt-0 w-[900px] bg-white border shadow-2xl z-[100]">
                     <div className="grid grid-cols-[auto_auto_auto_auto_1fr] gap-8 p-8">
                       {/* Column 1 - Main Links */}
                       <div className="space-y-3 min-w-[120px]">
@@ -165,12 +165,12 @@ const Header = () => {
                 onMouseEnter={() => setActiveDropdown("new-arrivals")}
                 onMouseLeave={() => setActiveDropdown(null)}
               >
-                <button className="text-sm font-semibold tracking-wide hover:text-[#D4AF37] transition-colors flex items-center gap-1 border-b-2 border-transparent">
+                <button className="text-sm font-semibold tracking-wide hover:text-[#D4AF37] transition-colors flex items-center gap-1 text-black">
                   NEW ARRIVALS
                   <ChevronDown size={14} className="text-gray-500" />
                 </button>
                 {activeDropdown === "new-arrivals" && (
-                  <div className="absolute left-1/2 -translate-x-1/2 top-full mt-0 w-[900px] bg-white border shadow-2xl p-8 z-[100] animate-[slide-down_0.3s_ease-out]">
+                  <div className="absolute left-1/2 -translate-x-1/2 top-full mt-0 w-[900px] bg-white border shadow-2xl p-8 z-[100]">
                     <div className="grid grid-cols-4 gap-6">
                       {dropdownProducts.map((product, idx) => (
                         <div key={idx} className="group cursor-pointer text-center">
@@ -200,12 +200,12 @@ const Header = () => {
                 onMouseEnter={() => setActiveDropdown("best-sellers")}
                 onMouseLeave={() => setActiveDropdown(null)}
               >
-                <button className="text-sm font-semibold tracking-wide hover:text-[#D4AF37] transition-colors flex items-center gap-1">
+                <button className="text-sm font-semibold tracking-wide hover:text-[#D4AF37] transition-colors flex items-center gap-1 text-black">
                   BEST SELLERS
                   <ChevronDown size={14} className="text-gray-500" />
                 </button>
                 {activeDropdown === "best-sellers" && (
-                  <div className="absolute left-1/2 -translate-x-1/2 top-full mt-0 w-[900px] bg-white border shadow-2xl p-8 z-[100] animate-[slide-down_0.3s_ease-out]">
+                  <div className="absolute left-1/2 -translate-x-1/2 top-full mt-0 w-[900px] bg-white border shadow-2xl p-8 z-[100]">
                     <div className="grid grid-cols-4 gap-6">
                       {dropdownProducts.map((product, idx) => (
                         <div key={idx} className="group cursor-pointer text-center">
@@ -235,12 +235,12 @@ const Header = () => {
                 onMouseEnter={() => setActiveDropdown("collections")}
                 onMouseLeave={() => setActiveDropdown(null)}
               >
-                <button className="text-sm font-semibold tracking-wide hover:text-[#D4AF37] transition-colors flex items-center gap-1">
+                <button className="text-sm font-semibold tracking-wide hover:text-[#D4AF37] transition-colors flex items-center gap-1 text-black">
                   COLLECTIONS
                   <ChevronDown size={14} className="text-gray-500" />
                 </button>
                 {activeDropdown === "collections" && (
-                  <div className="absolute left-1/2 -translate-x-1/2 top-full mt-0 w-[900px] bg-white border shadow-2xl p-8 z-[100] animate-[slide-down_0.3s_ease-out]">
+                  <div className="absolute left-1/2 -translate-x-1/2 top-full mt-0 w-[900px] bg-white border shadow-2xl p-8 z-[100]">
                     <div className="grid grid-cols-4 gap-6">
                       {dropdownProducts.map((product, idx) => (
                         <div key={idx} className="group cursor-pointer text-center">
@@ -265,17 +265,8 @@ const Header = () => {
               </div>
             </nav>
 
-            {/* Mobile Menu Button */}
-            <button
-              className="lg:hidden ml-auto"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              aria-label="Toggle menu"
-            >
-              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
-
             {/* Icons - Right Side */}
-            <div className="hidden lg:flex items-center gap-1 ml-auto">
+            <div className="flex items-center gap-1 ml-auto">
               <Button variant="ghost" size="icon" aria-label="Search">
                 <Search size={20} />
               </Button>

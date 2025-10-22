@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Menu, Search, ShoppingCart, User, X, ChevronDown, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "./ui/button";
-import lattafaLogo from "@/assets/lattafa-logo.png";
+import lattafaLogo from "@/assets/lattafa-logo-new.png";
 import sapphireOud from "@/assets/sapphire-oud.jpg";
 import desertFalcon from "@/assets/desert-falcon.jpg";
 import spiceCaravan from "@/assets/spice-caravan.jpg";
@@ -57,27 +57,27 @@ const Header = () => {
               {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
 
-            {/* Logo */}
+            {/* Logo - Far Left */}
             <div className="flex-shrink-0">
               <a href="/" className="block">
-                <img src={lattafaLogo} alt="Lattafa Perfumes" className="h-16 w-auto" />
+                <img src={lattafaLogo} alt="Lattafa Perfumes" className="h-14 w-auto" />
               </a>
             </div>
 
             {/* Desktop Navigation - Centered */}
-            <nav className="hidden lg:flex items-center space-x-8 flex-1 justify-center">
+            <nav className="hidden lg:flex items-center space-x-8 flex-1 justify-center mx-auto">
               {/* SHOP Dropdown */}
               <div
                 className="relative"
                 onMouseEnter={() => setActiveDropdown("shop")}
                 onMouseLeave={() => setActiveDropdown(null)}
               >
-                <button className="text-sm font-medium tracking-wide hover:text-[#D4AF37] transition-colors flex items-center gap-1">
+                <button className="text-sm font-semibold tracking-wide hover:text-[#D4AF37] transition-colors flex items-center gap-1">
                   SHOP
-                  <ChevronDown size={14} className="text-muted-foreground" />
+                  <ChevronDown size={14} className="text-gray-500" />
                 </button>
                 {activeDropdown === "shop" && (
-                  <div className="absolute left-1/2 -translate-x-1/2 top-full mt-0 w-[900px] bg-background border shadow-xl z-50 animate-[slide-down_0.3s_ease-out]">
+                  <div className="absolute left-1/2 -translate-x-1/2 top-full mt-0 w-[900px] bg-white border shadow-xl z-50 animate-[slide-down_0.3s_ease-out]">
                     <div className="grid grid-cols-[auto_auto_auto_auto_1fr] gap-8 p-8">
                       {/* Column 1 - Main Links */}
                       <div className="space-y-3 min-w-[120px]">
@@ -168,24 +168,24 @@ const Header = () => {
                 onMouseEnter={() => setActiveDropdown("new-arrivals")}
                 onMouseLeave={() => setActiveDropdown(null)}
               >
-                <button className="text-sm font-medium tracking-wide hover:text-[#D4AF37] transition-colors flex items-center gap-1">
+                <button className="text-sm font-semibold tracking-wide hover:text-[#D4AF37] transition-colors flex items-center gap-1 border-b-2 border-transparent hover:border-current">
                   NEW ARRIVALS
-                  <ChevronDown size={14} className="text-muted-foreground" />
+                  <ChevronDown size={14} className="text-gray-500" />
                 </button>
                 {activeDropdown === "new-arrivals" && (
-                  <div className="absolute left-1/2 -translate-x-1/2 top-full mt-0 w-[900px] bg-background border shadow-xl p-8 z-50 animate-[slide-down_0.3s_ease-out]">
+                  <div className="absolute left-1/2 -translate-x-1/2 top-full mt-0 w-[900px] bg-white border shadow-xl p-8 z-50 animate-[slide-down_0.3s_ease-out]">
                     <div className="grid grid-cols-4 gap-6">
                       {dropdownProducts.map((product, idx) => (
                         <div key={idx} className="group cursor-pointer text-center">
-                          <div className="relative aspect-square overflow-hidden bg-muted rounded-lg mb-3">
+                          <div className="relative aspect-square overflow-hidden bg-gray-100 rounded-2xl mb-3">
                             <img
                               src={product.image}
                               alt={product.name}
                               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                             />
                           </div>
-                          <h4 className="text-sm font-medium mb-2">{product.name}</h4>
-                          <button className="mx-auto w-10 h-10 rounded-full border-2 border-foreground flex items-center justify-center hover:bg-foreground hover:text-background transition-all">
+                          <h4 className="text-sm font-serif mb-2">{product.name}</h4>
+                          <button className="mx-auto w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200 transition-all">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                               <path d="M7 17L17 7M17 7H7M17 7V17"/>
                             </svg>
@@ -203,24 +203,24 @@ const Header = () => {
                 onMouseEnter={() => setActiveDropdown("best-sellers")}
                 onMouseLeave={() => setActiveDropdown(null)}
               >
-                <button className="text-sm font-medium tracking-wide hover:text-[#D4AF37] transition-colors flex items-center gap-1">
+                <button className="text-sm font-semibold tracking-wide hover:text-[#D4AF37] transition-colors flex items-center gap-1">
                   BEST SELLERS
-                  <ChevronDown size={14} className="text-muted-foreground" />
+                  <ChevronDown size={14} className="text-gray-500" />
                 </button>
                 {activeDropdown === "best-sellers" && (
-                  <div className="absolute left-1/2 -translate-x-1/2 top-full mt-0 w-[900px] bg-background border shadow-xl p-8 z-50 animate-[slide-down_0.3s_ease-out]">
+                  <div className="absolute left-1/2 -translate-x-1/2 top-full mt-0 w-[900px] bg-white border shadow-xl p-8 z-50 animate-[slide-down_0.3s_ease-out]">
                     <div className="grid grid-cols-4 gap-6">
                       {dropdownProducts.map((product, idx) => (
                         <div key={idx} className="group cursor-pointer text-center">
-                          <div className="relative aspect-square overflow-hidden bg-muted rounded-lg mb-3">
+                          <div className="relative aspect-square overflow-hidden bg-gray-100 rounded-2xl mb-3">
                             <img
                               src={product.image}
                               alt={product.name}
                               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                             />
                           </div>
-                          <h4 className="text-sm font-medium mb-2">{product.name}</h4>
-                          <button className="mx-auto w-10 h-10 rounded-full border-2 border-foreground flex items-center justify-center hover:bg-foreground hover:text-background transition-all">
+                          <h4 className="text-sm font-serif mb-2">{product.name}</h4>
+                          <button className="mx-auto w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200 transition-all">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                               <path d="M7 17L17 7M17 7H7M17 7V17"/>
                             </svg>
@@ -238,24 +238,24 @@ const Header = () => {
                 onMouseEnter={() => setActiveDropdown("collections")}
                 onMouseLeave={() => setActiveDropdown(null)}
               >
-                <button className="text-sm font-medium tracking-wide hover:text-[#D4AF37] transition-colors flex items-center gap-1">
+                <button className="text-sm font-semibold tracking-wide hover:text-[#D4AF37] transition-colors flex items-center gap-1">
                   COLLECTIONS
-                  <ChevronDown size={14} className="text-muted-foreground" />
+                  <ChevronDown size={14} className="text-gray-500" />
                 </button>
                 {activeDropdown === "collections" && (
-                  <div className="absolute left-1/2 -translate-x-1/2 top-full mt-0 w-[900px] bg-background border shadow-xl p-8 z-50 animate-[slide-down_0.3s_ease-out]">
+                  <div className="absolute left-1/2 -translate-x-1/2 top-full mt-0 w-[900px] bg-white border shadow-xl p-8 z-50 animate-[slide-down_0.3s_ease-out]">
                     <div className="grid grid-cols-4 gap-6">
                       {dropdownProducts.map((product, idx) => (
                         <div key={idx} className="group cursor-pointer text-center">
-                          <div className="relative aspect-square overflow-hidden bg-muted rounded-lg mb-3">
+                          <div className="relative aspect-square overflow-hidden bg-gray-100 rounded-2xl mb-3">
                             <img
                               src={product.image}
                               alt={product.name}
                               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                             />
                           </div>
-                          <h4 className="text-sm font-medium mb-2">{product.name}</h4>
-                          <button className="mx-auto w-10 h-10 rounded-full border-2 border-foreground flex items-center justify-center hover:bg-foreground hover:text-background transition-all">
+                          <h4 className="text-sm font-serif mb-2">{product.name}</h4>
+                          <button className="mx-auto w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200 transition-all">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                               <path d="M7 17L17 7M17 7H7M17 7V17"/>
                             </svg>
@@ -268,7 +268,7 @@ const Header = () => {
               </div>
             </nav>
 
-            {/* Icons - Horizontal Layout on Right */}
+            {/* Icons - Far Right */}
             <div className="flex items-center gap-1">
               <Button variant="ghost" size="icon" aria-label="Search">
                 <Search size={20} />

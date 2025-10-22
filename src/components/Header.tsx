@@ -68,91 +68,52 @@ const Header = () => {
                   <ChevronDown size={14} className="text-gray-500" />
                 </button>
                 {activeDropdown === "shop" && (
-                  <div className="absolute left-1/2 -translate-x-1/2 top-full mt-0 w-[900px] bg-white border shadow-2xl z-[100]">
-                    <div className="grid grid-cols-[auto_auto_auto_auto_1fr] gap-8 p-8">
-                      {/* Column 1 - Main Links */}
-                      <div className="space-y-3 min-w-[120px]">
-                        <a href="/collections/best-sellers" className="block text-sm hover:underline font-medium text-black">Best Sellers</a>
-                        <a href="/collections/new-arrivals" className="block text-sm hover:underline font-medium text-black">New Arrivals</a>
-                      </div>
-                      
-                      {/* Column 2 - By Category */}
-                      <div className="min-w-[160px]">
-                        <h3 className="font-semibold text-sm mb-3 text-black">By Category</h3>
-                        <div className="space-y-3">
-                          <a href="/collections/all" className="block text-sm hover:underline text-black">All Fragrances</a>
-                          <a href="/collections/women" className="block text-sm hover:underline text-black">Women's Fragrances</a>
-                          <a href="/collections/men" className="block text-sm hover:underline text-black">Men's Fragrances</a>
-                          <a href="/collections/unisex" className="block text-sm hover:underline text-black">Unisex Fragrances</a>
+                  <div className="absolute left-1/2 -translate-x-1/2 top-full mt-0 w-[600px] bg-white border shadow-2xl z-[100] p-8">
+                    {/* Trend This Week Carousel */}
+                    <div className="w-full">
+                      <div className="flex items-center justify-between mb-6">
+                        <h3 className="font-serif text-lg text-black">Trend This Week</h3>
+                        <div className="flex items-center gap-3">
+                          <span className="text-sm text-gray-500">{trendingIndex + 1}/{trendingProducts.length}</span>
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              setTrendingIndex(Math.max(0, trendingIndex - 1));
+                            }}
+                            disabled={trendingIndex === 0}
+                            className="disabled:opacity-30 hover:opacity-70 transition-opacity text-black"
+                            aria-label="Previous"
+                          >
+                            <ChevronLeft size={20} />
+                          </button>
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              setTrendingIndex(Math.min(trendingProducts.length - 2, trendingIndex + 1));
+                            }}
+                            disabled={trendingIndex >= trendingProducts.length - 2}
+                            className="disabled:opacity-30 hover:opacity-70 transition-opacity text-black"
+                            aria-label="Next"
+                          >
+                            <ChevronRight size={20} />
+                          </button>
                         </div>
                       </div>
-                      
-                      {/* Column 3 - By Type */}
-                      <div className="min-w-[160px]">
-                        <h3 className="font-semibold text-sm mb-3 text-black">By Type</h3>
-                        <div className="space-y-3">
-                          <a href="/collections/edp" className="block text-sm hover:underline text-black">Eau de Parfum (EDP)</a>
-                          <a href="/collections/deodorant" className="block text-sm hover:underline text-black">Deodorant</a>
-                          <a href="/collections/air-freshener" className="block text-sm hover:underline text-black">Air Freshener</a>
-                          <a href="/collections/spray" className="block text-sm hover:underline text-black">All Over Spray</a>
-                        </div>
-                      </div>
-                      
-                      {/* Column 4 - By Brand */}
-                      <div className="min-w-[120px]">
-                        <h3 className="font-semibold text-sm mb-3 text-black">By Brand</h3>
-                        <div className="space-y-3">
-                          <a href="/collections/lattafa" className="block text-sm hover:underline text-black">Lattafa</a>
-                          <a href="/collections/lattafa-pride" className="block text-sm hover:underline text-black">Lattafa Pride</a>
-                        </div>
-                      </div>
-                      
-                      {/* Trend This Week Carousel */}
-                      <div className="border-l pl-8 min-w-[280px]">
-                        <div className="flex items-center justify-between mb-4">
-                          <h3 className="font-serif text-base text-black">Trend This Week</h3>
-                          <div className="flex items-center gap-2">
-                            <span className="text-sm text-gray-500">{currentPage}/{totalPages}</span>
-                            <button
-                              onClick={(e) => {
-                                e.stopPropagation();
-                                setTrendingIndex(Math.max(0, trendingIndex - 1));
-                              }}
-                              disabled={trendingIndex === 0}
-                              className="disabled:opacity-30 hover:opacity-70 transition-opacity text-black"
-                              aria-label="Previous"
-                            >
-                              <ChevronLeft size={18} />
-                            </button>
-                            <button
-                              onClick={(e) => {
-                                e.stopPropagation();
-                                setTrendingIndex(Math.min(totalPages - 1, trendingIndex + 1));
-                              }}
-                              disabled={trendingIndex === totalPages - 1}
-                              className="disabled:opacity-30 hover:opacity-70 transition-opacity text-black"
-                              aria-label="Next"
-                            >
-                              <ChevronRight size={18} />
-                            </button>
-                          </div>
-                        </div>
-                        <div className="grid grid-cols-2 gap-4">
-                          {trendingProducts.slice(trendingIndex, trendingIndex + 2).map((product, idx) => (
-                            <div key={idx} className="group cursor-pointer">
-                              <div className="relative aspect-square overflow-hidden bg-gray-100 rounded mb-2">
-                                <img
-                                  src={product.image}
-                                  alt={product.name}
-                                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                                />
-                              </div>
-                              <p className="text-xs text-gray-500 mb-1">{product.vendor}</p>
-                              <h4 className="text-sm font-medium mb-1 leading-tight text-black">{product.name}</h4>
-                              <p className="text-sm font-semibold text-black">{product.price}</p>
+                      <div className="grid grid-cols-2 gap-6">
+                        {trendingProducts.slice(trendingIndex, trendingIndex + 2).map((product, idx) => (
+                          <div key={idx} className="group cursor-pointer text-center">
+                            <div className="relative aspect-square overflow-hidden bg-gray-50 rounded mb-3">
+                              <img
+                                src={product.image}
+                                alt={product.name}
+                                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                              />
                             </div>
-                          ))}
-                        </div>
+                            <p className="text-xs text-gray-500 mb-1">{product.vendor}</p>
+                            <h4 className="text-base font-semibold mb-1 leading-tight text-black">{product.name}</h4>
+                            <p className="text-base font-bold text-black">{product.price}</p>
+                          </div>
+                        ))}
                       </div>
                     </div>
                   </div>

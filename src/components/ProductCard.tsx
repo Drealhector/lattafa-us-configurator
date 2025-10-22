@@ -11,6 +11,7 @@ interface ProductCardProps {
   reviewsCount?: number;
   status?: string;
   tags?: string[];
+  compact?: boolean;
 }
 
 const ProductCard = ({
@@ -23,10 +24,11 @@ const ProductCard = ({
   reviewsCount = 0,
   status,
   tags = [],
+  compact = false,
 }: ProductCardProps) => {
   return (
-    <div className="group cursor-pointer">
-      <div className="relative aspect-square overflow-hidden bg-secondary rounded-sm mb-3">
+    <div className={`group cursor-pointer ${compact ? 'text-xs' : ''}`}>
+      <div className={`relative aspect-square overflow-hidden bg-secondary rounded-sm ${compact ? 'mb-2' : 'mb-3'}`}>
         <img
           src={image}
           alt={name}
@@ -42,13 +44,13 @@ const ProductCard = ({
         )}
       </div>
       
-      <div className="space-y-1">
+      <div className={compact ? 'space-y-0.5' : 'space-y-1'}>
         <p className="text-xs text-muted-foreground">{vendor}</p>
-        <h3 className="text-sm font-medium line-clamp-2 group-hover:text-accent transition-colors">
+        <h3 className={`font-medium line-clamp-2 group-hover:text-accent transition-colors ${compact ? 'text-xs' : 'text-sm'}`}>
           {name}
         </h3>
         
-        {reviewsCount > 0 && (
+        {!compact && reviewsCount > 0 && (
           <div className="flex items-center gap-1">
             <div className="flex">
               {[...Array(5)].map((_, i) => (
@@ -64,7 +66,7 @@ const ProductCard = ({
         )}
         
         <div className="flex items-center gap-2">
-          <span className="text-sm font-semibold">{price}</span>
+          <span className={`font-semibold ${compact ? 'text-xs' : 'text-sm'}`}>{price}</span>
           {originalPrice && (
             <span className="text-xs text-muted-foreground line-through">{originalPrice}</span>
           )}

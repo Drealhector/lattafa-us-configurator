@@ -25,12 +25,6 @@ const Index = () => {
     { name: "Rose Mirage", image: roseMirage, price: "$29.99", rating: 4.0, reviewsCount: 5 },
   ];
 
-  const bundlesProducts = [
-    { name: "Desert Luxe Set", image: desertFalcon, price: "$59.99", rating: 5, reviewsCount: 15 },
-    { name: "Noir Duo Set", image: candyNoir, price: "$54.99", rating: 4.8, reviewsCount: 12 },
-    { name: "Spice Caravan Set", image: spiceCaravan, price: "$54.99", rating: 4.7, reviewsCount: 8 },
-    { name: "Rose Collection", image: roseMirage, price: "$49.99", rating: 4.9, reviewsCount: 20 },
-  ];
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -44,12 +38,6 @@ const Index = () => {
           title="Under $30" 
           products={under30Products.slice(0, 8)}
           viewMoreLink="/collections/under-30"
-          columns={4}
-        />
-        <ProductSection 
-          title="Bundles" 
-          products={bundlesProducts}
-          viewMoreLink="/collections/bundles"
           columns={4}
         />
         <Testimonials />

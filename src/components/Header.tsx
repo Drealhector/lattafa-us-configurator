@@ -14,7 +14,7 @@ const Header = () => {
   const [trendingIndex, setTrendingIndex] = useState(0);
 
   const trendingProducts = [
-    { name: "Sapphire Oud", image: sapphireOud, vendor: "Lattafa", price: "$49.99 USD", status: "sold out" },
+    { name: "Sapphire Oud", image: sapphireOud, vendor: "Lattafa", price: "$49.99 USD" },
     { name: "Desert Falcon", image: desertFalcon, vendor: "Lattafa", price: "From $14.99 USD" },
     { name: "Spice Caravan", image: spiceCaravan, vendor: "Lattafa", price: "$49.99 USD" },
     { name: "Rose Mirage", image: roseMirage, vendor: "Lattafa", price: "$44.99 USD" },
@@ -33,10 +33,10 @@ const Header = () => {
 
   return (
     <header className="sticky top-0 z-50 bg-background shadow-sm">
-      {/* Animated Top Bar */}
-      <div className="bg-primary text-primary-foreground py-2.5 overflow-hidden relative">
+      {/* Animated Top Bar - Brown with scrolling text */}
+      <div className="bg-[#5B3A29] text-white py-2.5 overflow-hidden relative">
         <div className="flex animate-[scroll-left_25s_linear_infinite]">
-          {[...Array(8)].map((_, i) => (
+          {[...Array(10)].map((_, i) => (
             <span key={i} className="inline-block px-12 text-sm font-medium whitespace-nowrap">
               FREE Shipping On Orders Over USD $60
             </span>
@@ -60,11 +60,11 @@ const Header = () => {
             {/* Logo */}
             <div className="flex-shrink-0">
               <a href="/" className="block">
-                <img src={lattafaLogo} alt="Lattafa" className="h-14 w-auto" />
+                <img src={lattafaLogo} alt="Lattafa Perfumes" className="h-14 w-auto" />
               </a>
             </div>
 
-            {/* Desktop Navigation */}
+            {/* Desktop Navigation - Centered */}
             <nav className="hidden lg:flex items-center space-x-8 flex-1 justify-center">
               {/* SHOP Dropdown */}
               <div
@@ -77,9 +77,9 @@ const Header = () => {
                   <ChevronDown size={14} />
                 </button>
                 {activeDropdown === "shop" && (
-                  <div className="absolute left-0 top-full mt-4 w-[850px] bg-background border shadow-xl z-50 animate-fade-in">
+                  <div className="absolute left-1/2 -translate-x-1/2 top-full mt-4 w-[900px] bg-background border shadow-xl z-50 animate-fade-in">
                     <div className="grid grid-cols-[auto_auto_auto_auto_1fr] gap-8 p-8">
-                      {/* Column 1 */}
+                      {/* Column 1 - Main Links */}
                       <div className="space-y-3 min-w-[120px]">
                         <a href="/collections/best-sellers" className="block text-sm hover:underline font-medium">Best Sellers</a>
                         <a href="/collections/new-arrivals" className="block text-sm hover:underline font-medium">New Arrivals</a>
@@ -125,7 +125,7 @@ const Header = () => {
                             <button
                               onClick={() => setTrendingIndex(Math.max(0, trendingIndex - 1))}
                               disabled={trendingIndex === 0}
-                              className="disabled:opacity-30"
+                              className="disabled:opacity-30 hover:opacity-70 transition-opacity"
                               aria-label="Previous"
                             >
                               <ChevronLeft size={18} />
@@ -133,7 +133,7 @@ const Header = () => {
                             <button
                               onClick={() => setTrendingIndex(Math.min(totalPages - 1, trendingIndex + 1))}
                               disabled={trendingIndex === totalPages - 1}
-                              className="disabled:opacity-30"
+                              className="disabled:opacity-30 hover:opacity-70 transition-opacity"
                               aria-label="Next"
                             >
                               <ChevronRight size={18} />
@@ -149,11 +149,6 @@ const Header = () => {
                                   alt={product.name}
                                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                                 />
-                                {product.status === "sold out" && (
-                                  <div className="absolute inset-0 bg-background/80 flex items-center justify-center">
-                                    <span className="text-xs font-medium">SOLD OUT</span>
-                                  </div>
-                                )}
                               </div>
                               <p className="text-xs text-muted-foreground mb-1">{product.vendor}</p>
                               <h4 className="text-sm font-medium mb-1 leading-tight">{product.name}</h4>
@@ -178,7 +173,7 @@ const Header = () => {
                   <ChevronDown size={14} />
                 </button>
                 {activeDropdown === "new-arrivals" && (
-                  <div className="absolute left-1/2 -translate-x-1/2 top-full mt-4 w-[900px] bg-background border shadow-xl p-8 z-50 animate-fade-in">
+                  <div className="absolute left-1/2 -translate-x-1/2 top-full mt-4 w-[900px] bg-background border shadow-xl p-8 z-50 animate-[slide-down_0.3s_ease-out]">
                     <div className="grid grid-cols-4 gap-6">
                       {dropdownProducts.map((product, idx) => (
                         <div key={idx} className="group cursor-pointer text-center">
@@ -211,7 +206,7 @@ const Header = () => {
                   <ChevronDown size={14} />
                 </button>
                 {activeDropdown === "best-sellers" && (
-                  <div className="absolute left-1/2 -translate-x-1/2 top-full mt-4 w-[900px] bg-background border shadow-xl p-8 z-50 animate-fade-in">
+                  <div className="absolute left-1/2 -translate-x-1/2 top-full mt-4 w-[900px] bg-background border shadow-xl p-8 z-50 animate-[slide-down_0.3s_ease-out]">
                     <div className="grid grid-cols-4 gap-6">
                       {dropdownProducts.map((product, idx) => (
                         <div key={idx} className="group cursor-pointer text-center">
@@ -244,7 +239,7 @@ const Header = () => {
                   <ChevronDown size={14} />
                 </button>
                 {activeDropdown === "collections" && (
-                  <div className="absolute left-1/2 -translate-x-1/2 top-full mt-4 w-[900px] bg-background border shadow-xl p-8 z-50 animate-fade-in">
+                  <div className="absolute left-1/2 -translate-x-1/2 top-full mt-4 w-[900px] bg-background border shadow-xl p-8 z-50 animate-[slide-down_0.3s_ease-out]">
                     <div className="grid grid-cols-4 gap-6">
                       {dropdownProducts.map((product, idx) => (
                         <div key={idx} className="group cursor-pointer text-center">
@@ -267,7 +262,7 @@ const Header = () => {
               </div>
             </nav>
 
-            {/* Icons - Horizontal Layout */}
+            {/* Icons - Horizontal Layout on Right */}
             <div className="flex items-center gap-1">
               <Button variant="ghost" size="icon" aria-label="Search">
                 <Search size={20} />

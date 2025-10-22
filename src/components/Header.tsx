@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Menu, Search, ShoppingCart, User, X, ChevronDown, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "./ui/button";
-import lattafaLogo from "@/assets/lattafa-logo-new.png";
+import lattafaLogo from "@/assets/lattafa-logo-extracted.png";
 import sapphireOud from "@/assets/sapphire-oud.jpg";
 import desertFalcon from "@/assets/desert-falcon.jpg";
 import spiceCaravan from "@/assets/spice-caravan.jpg";
@@ -45,27 +45,18 @@ const Header = () => {
       </div>
 
       {/* Main Header */}
-      <div className="border-b bg-background">
+      <div className="border-b bg-white">
         <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between h-20">
-            {/* Mobile Menu Button */}
-            <button
-              className="lg:hidden"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              aria-label="Toggle menu"
-            >
-              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
-
-            {/* Logo - Far Left */}
+          <div className="flex items-center h-20 gap-8">
+            {/* Logo - Left Side */}
             <div className="flex-shrink-0">
               <a href="/" className="block">
-                <img src={lattafaLogo} alt="Lattafa Perfumes" className="h-14 w-auto" />
+                <img src={lattafaLogo} alt="Lattafa Perfumes" className="h-16 w-auto" />
               </a>
             </div>
 
-            {/* Desktop Navigation - Centered */}
-            <nav className="hidden lg:flex items-center space-x-8 flex-1 justify-center mx-auto">
+            {/* Desktop Navigation - Center */}
+            <nav className="hidden lg:flex items-center space-x-8 flex-1 justify-center">
               {/* SHOP Dropdown */}
               <div
                 className="relative"
@@ -77,63 +68,69 @@ const Header = () => {
                   <ChevronDown size={14} className="text-gray-500" />
                 </button>
                 {activeDropdown === "shop" && (
-                  <div className="absolute left-1/2 -translate-x-1/2 top-full mt-0 w-[900px] bg-white border shadow-xl z-50 animate-[slide-down_0.3s_ease-out]">
+                  <div className="absolute left-1/2 -translate-x-1/2 top-full mt-0 w-[900px] bg-white border shadow-2xl z-[100] animate-[slide-down_0.3s_ease-out]">
                     <div className="grid grid-cols-[auto_auto_auto_auto_1fr] gap-8 p-8">
                       {/* Column 1 - Main Links */}
                       <div className="space-y-3 min-w-[120px]">
-                        <a href="/collections/best-sellers" className="block text-sm hover:underline font-medium">Best Sellers</a>
-                        <a href="/collections/new-arrivals" className="block text-sm hover:underline font-medium">New Arrivals</a>
+                        <a href="/collections/best-sellers" className="block text-sm hover:underline font-medium text-black">Best Sellers</a>
+                        <a href="/collections/new-arrivals" className="block text-sm hover:underline font-medium text-black">New Arrivals</a>
                       </div>
                       
                       {/* Column 2 - By Category */}
                       <div className="min-w-[160px]">
-                        <h3 className="font-semibold text-sm mb-3">By Category</h3>
+                        <h3 className="font-semibold text-sm mb-3 text-black">By Category</h3>
                         <div className="space-y-3">
-                          <a href="/collections/all" className="block text-sm hover:underline">All Fragrances</a>
-                          <a href="/collections/women" className="block text-sm hover:underline">Women's Fragrances</a>
-                          <a href="/collections/men" className="block text-sm hover:underline">Men's Fragrances</a>
-                          <a href="/collections/unisex" className="block text-sm hover:underline">Unisex Fragrances</a>
+                          <a href="/collections/all" className="block text-sm hover:underline text-black">All Fragrances</a>
+                          <a href="/collections/women" className="block text-sm hover:underline text-black">Women's Fragrances</a>
+                          <a href="/collections/men" className="block text-sm hover:underline text-black">Men's Fragrances</a>
+                          <a href="/collections/unisex" className="block text-sm hover:underline text-black">Unisex Fragrances</a>
                         </div>
                       </div>
                       
                       {/* Column 3 - By Type */}
                       <div className="min-w-[160px]">
-                        <h3 className="font-semibold text-sm mb-3">By Type</h3>
+                        <h3 className="font-semibold text-sm mb-3 text-black">By Type</h3>
                         <div className="space-y-3">
-                          <a href="/collections/edp" className="block text-sm hover:underline">Eau de Parfum (EDP)</a>
-                          <a href="/collections/deodorant" className="block text-sm hover:underline">Deodorant</a>
-                          <a href="/collections/air-freshener" className="block text-sm hover:underline">Air Freshener</a>
-                          <a href="/collections/spray" className="block text-sm hover:underline">All Over Spray</a>
+                          <a href="/collections/edp" className="block text-sm hover:underline text-black">Eau de Parfum (EDP)</a>
+                          <a href="/collections/deodorant" className="block text-sm hover:underline text-black">Deodorant</a>
+                          <a href="/collections/air-freshener" className="block text-sm hover:underline text-black">Air Freshener</a>
+                          <a href="/collections/spray" className="block text-sm hover:underline text-black">All Over Spray</a>
                         </div>
                       </div>
                       
                       {/* Column 4 - By Brand */}
                       <div className="min-w-[120px]">
-                        <h3 className="font-semibold text-sm mb-3">By Brand</h3>
+                        <h3 className="font-semibold text-sm mb-3 text-black">By Brand</h3>
                         <div className="space-y-3">
-                          <a href="/collections/lattafa" className="block text-sm hover:underline">Lattafa</a>
-                          <a href="/collections/lattafa-pride" className="block text-sm hover:underline">Lattafa Pride</a>
+                          <a href="/collections/lattafa" className="block text-sm hover:underline text-black">Lattafa</a>
+                          <a href="/collections/lattafa-pride" className="block text-sm hover:underline text-black">Lattafa Pride</a>
                         </div>
                       </div>
                       
                       {/* Trend This Week Carousel */}
                       <div className="border-l pl-8 min-w-[280px]">
                         <div className="flex items-center justify-between mb-4">
-                          <h3 className="font-serif text-base">Trend This Week</h3>
+                          <h3 className="font-serif text-base text-black">Trend This Week</h3>
                           <div className="flex items-center gap-2">
-                            <span className="text-sm text-muted-foreground">{currentPage}/{totalPages}</span>
+                            <span className="text-sm text-gray-500">{currentPage}/{totalPages}</span>
                             <button
-                              onClick={() => setTrendingIndex(Math.max(0, trendingIndex - 1))}
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                setTrendingIndex(Math.max(0, trendingIndex - 1));
+                              }}
                               disabled={trendingIndex === 0}
-                              className="disabled:opacity-30 hover:opacity-70 transition-opacity"
+                              className="disabled:opacity-30 hover:opacity-70 transition-opacity text-black"
                               aria-label="Previous"
                             >
                               <ChevronLeft size={18} />
                             </button>
                             <button
-                              onClick={() => setTrendingIndex(Math.min(totalPages - 1, trendingIndex + 1))}
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                setTrendingIndex(Math.min(totalPages - 1, trendingIndex + 1));
+                              }}
                               disabled={trendingIndex === totalPages - 1}
-                              className="disabled:opacity-30 hover:opacity-70 transition-opacity"
+                              className="disabled:opacity-30 hover:opacity-70 transition-opacity text-black"
                               aria-label="Next"
                             >
                               <ChevronRight size={18} />
@@ -143,16 +140,16 @@ const Header = () => {
                         <div className="grid grid-cols-2 gap-4">
                           {trendingProducts.slice(trendingIndex, trendingIndex + 2).map((product, idx) => (
                             <div key={idx} className="group cursor-pointer">
-                              <div className="relative aspect-square overflow-hidden bg-muted rounded mb-2">
+                              <div className="relative aspect-square overflow-hidden bg-gray-100 rounded mb-2">
                                 <img
                                   src={product.image}
                                   alt={product.name}
                                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                                 />
                               </div>
-                              <p className="text-xs text-muted-foreground mb-1">{product.vendor}</p>
-                              <h4 className="text-sm font-medium mb-1 leading-tight">{product.name}</h4>
-                              <p className="text-sm font-semibold">{product.price}</p>
+                              <p className="text-xs text-gray-500 mb-1">{product.vendor}</p>
+                              <h4 className="text-sm font-medium mb-1 leading-tight text-black">{product.name}</h4>
+                              <p className="text-sm font-semibold text-black">{product.price}</p>
                             </div>
                           ))}
                         </div>
@@ -168,12 +165,12 @@ const Header = () => {
                 onMouseEnter={() => setActiveDropdown("new-arrivals")}
                 onMouseLeave={() => setActiveDropdown(null)}
               >
-                <button className="text-sm font-semibold tracking-wide hover:text-[#D4AF37] transition-colors flex items-center gap-1 border-b-2 border-transparent hover:border-current">
+                <button className="text-sm font-semibold tracking-wide hover:text-[#D4AF37] transition-colors flex items-center gap-1 border-b-2 border-transparent">
                   NEW ARRIVALS
                   <ChevronDown size={14} className="text-gray-500" />
                 </button>
                 {activeDropdown === "new-arrivals" && (
-                  <div className="absolute left-1/2 -translate-x-1/2 top-full mt-0 w-[900px] bg-white border shadow-xl p-8 z-50 animate-[slide-down_0.3s_ease-out]">
+                  <div className="absolute left-1/2 -translate-x-1/2 top-full mt-0 w-[900px] bg-white border shadow-2xl p-8 z-[100] animate-[slide-down_0.3s_ease-out]">
                     <div className="grid grid-cols-4 gap-6">
                       {dropdownProducts.map((product, idx) => (
                         <div key={idx} className="group cursor-pointer text-center">
@@ -184,7 +181,7 @@ const Header = () => {
                               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                             />
                           </div>
-                          <h4 className="text-sm font-serif mb-2">{product.name}</h4>
+                          <h4 className="text-sm font-serif mb-2 text-black">{product.name}</h4>
                           <button className="mx-auto w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200 transition-all">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                               <path d="M7 17L17 7M17 7H7M17 7V17"/>
@@ -208,7 +205,7 @@ const Header = () => {
                   <ChevronDown size={14} className="text-gray-500" />
                 </button>
                 {activeDropdown === "best-sellers" && (
-                  <div className="absolute left-1/2 -translate-x-1/2 top-full mt-0 w-[900px] bg-white border shadow-xl p-8 z-50 animate-[slide-down_0.3s_ease-out]">
+                  <div className="absolute left-1/2 -translate-x-1/2 top-full mt-0 w-[900px] bg-white border shadow-2xl p-8 z-[100] animate-[slide-down_0.3s_ease-out]">
                     <div className="grid grid-cols-4 gap-6">
                       {dropdownProducts.map((product, idx) => (
                         <div key={idx} className="group cursor-pointer text-center">
@@ -219,7 +216,7 @@ const Header = () => {
                               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                             />
                           </div>
-                          <h4 className="text-sm font-serif mb-2">{product.name}</h4>
+                          <h4 className="text-sm font-serif mb-2 text-black">{product.name}</h4>
                           <button className="mx-auto w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200 transition-all">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                               <path d="M7 17L17 7M17 7H7M17 7V17"/>
@@ -243,7 +240,7 @@ const Header = () => {
                   <ChevronDown size={14} className="text-gray-500" />
                 </button>
                 {activeDropdown === "collections" && (
-                  <div className="absolute left-1/2 -translate-x-1/2 top-full mt-0 w-[900px] bg-white border shadow-xl p-8 z-50 animate-[slide-down_0.3s_ease-out]">
+                  <div className="absolute left-1/2 -translate-x-1/2 top-full mt-0 w-[900px] bg-white border shadow-2xl p-8 z-[100] animate-[slide-down_0.3s_ease-out]">
                     <div className="grid grid-cols-4 gap-6">
                       {dropdownProducts.map((product, idx) => (
                         <div key={idx} className="group cursor-pointer text-center">
@@ -254,7 +251,7 @@ const Header = () => {
                               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                             />
                           </div>
-                          <h4 className="text-sm font-serif mb-2">{product.name}</h4>
+                          <h4 className="text-sm font-serif mb-2 text-black">{product.name}</h4>
                           <button className="mx-auto w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200 transition-all">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                               <path d="M7 17L17 7M17 7H7M17 7V17"/>
@@ -268,17 +265,26 @@ const Header = () => {
               </div>
             </nav>
 
-            {/* Icons - Far Right */}
-            <div className="flex items-center gap-1">
+            {/* Mobile Menu Button */}
+            <button
+              className="lg:hidden ml-auto"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              aria-label="Toggle menu"
+            >
+              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+
+            {/* Icons - Right Side */}
+            <div className="hidden lg:flex items-center gap-1 ml-auto">
               <Button variant="ghost" size="icon" aria-label="Search">
                 <Search size={20} />
               </Button>
-              <Button variant="ghost" size="icon" aria-label="Account" className="hidden sm:flex">
+              <Button variant="ghost" size="icon" aria-label="Account">
                 <User size={20} />
               </Button>
               <Button variant="ghost" size="icon" aria-label="Cart" className="relative">
                 <ShoppingCart size={20} />
-                <span className="absolute -top-1 -right-1 bg-foreground text-background text-xs rounded-full w-5 h-5 flex items-center justify-center font-medium">
+                <span className="absolute -top-1 -right-1 bg-black text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-medium">
                   0
                 </span>
               </Button>

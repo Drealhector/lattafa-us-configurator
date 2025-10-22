@@ -60,7 +60,7 @@ const Header = () => {
             {/* Logo */}
             <div className="flex-shrink-0">
               <a href="/" className="block">
-                <img src={lattafaLogo} alt="Lattafa Perfumes" className="h-14 w-auto" />
+                <img src={lattafaLogo} alt="Lattafa Perfumes" className="h-16 w-auto" />
               </a>
             </div>
 

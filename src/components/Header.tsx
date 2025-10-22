@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Menu, Search, ShoppingCart, User, X, ChevronDown, ChevronLeft, ChevronRight, ArrowUpRight } from "lucide-react";
+import { Menu, Search, ShoppingCart, User, X, ChevronDown, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "./ui/button";
 import lattafaLogo from "@/assets/lattafa-logo.png";
 import sapphireOud from "@/assets/sapphire-oud.jpg";
@@ -72,12 +72,12 @@ const Header = () => {
                 onMouseEnter={() => setActiveDropdown("shop")}
                 onMouseLeave={() => setActiveDropdown(null)}
               >
-                <button className="text-sm font-medium tracking-wide hover:opacity-70 transition-opacity flex items-center gap-1">
+                <button className="text-sm font-medium tracking-wide hover:text-[#D4AF37] transition-colors flex items-center gap-1">
                   SHOP
-                  <ChevronDown size={14} />
+                  <ChevronDown size={14} className="text-muted-foreground" />
                 </button>
                 {activeDropdown === "shop" && (
-                  <div className="absolute left-1/2 -translate-x-1/2 top-full mt-4 w-[900px] bg-background border shadow-xl z-50 animate-fade-in">
+                  <div className="absolute left-1/2 -translate-x-1/2 top-full mt-0 w-[900px] bg-background border shadow-xl z-50 animate-[slide-down_0.3s_ease-out]">
                     <div className="grid grid-cols-[auto_auto_auto_auto_1fr] gap-8 p-8">
                       {/* Column 1 - Main Links */}
                       <div className="space-y-3 min-w-[120px]">
@@ -168,12 +168,12 @@ const Header = () => {
                 onMouseEnter={() => setActiveDropdown("new-arrivals")}
                 onMouseLeave={() => setActiveDropdown(null)}
               >
-                <button className="text-sm font-medium tracking-wide hover:opacity-70 transition-opacity flex items-center gap-1">
+                <button className="text-sm font-medium tracking-wide hover:text-[#D4AF37] transition-colors flex items-center gap-1">
                   NEW ARRIVALS
-                  <ChevronDown size={14} />
+                  <ChevronDown size={14} className="text-muted-foreground" />
                 </button>
                 {activeDropdown === "new-arrivals" && (
-                  <div className="absolute left-1/2 -translate-x-1/2 top-full mt-4 w-[900px] bg-background border shadow-xl p-8 z-50 animate-[slide-down_0.3s_ease-out]">
+                  <div className="absolute left-1/2 -translate-x-1/2 top-full mt-0 w-[900px] bg-background border shadow-xl p-8 z-50 animate-[slide-down_0.3s_ease-out]">
                     <div className="grid grid-cols-4 gap-6">
                       {dropdownProducts.map((product, idx) => (
                         <div key={idx} className="group cursor-pointer text-center">
@@ -184,9 +184,11 @@ const Header = () => {
                               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                             />
                           </div>
-                          <h4 className="text-sm font-serif mb-2">{product.name}</h4>
+                          <h4 className="text-sm font-medium mb-2">{product.name}</h4>
                           <button className="mx-auto w-10 h-10 rounded-full border-2 border-foreground flex items-center justify-center hover:bg-foreground hover:text-background transition-all">
-                            <ArrowUpRight size={18} />
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                              <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                            </svg>
                           </button>
                         </div>
                       ))}
@@ -201,12 +203,12 @@ const Header = () => {
                 onMouseEnter={() => setActiveDropdown("best-sellers")}
                 onMouseLeave={() => setActiveDropdown(null)}
               >
-                <button className="text-sm font-medium tracking-wide hover:opacity-70 transition-opacity flex items-center gap-1">
+                <button className="text-sm font-medium tracking-wide hover:text-[#D4AF37] transition-colors flex items-center gap-1">
                   BEST SELLERS
-                  <ChevronDown size={14} />
+                  <ChevronDown size={14} className="text-muted-foreground" />
                 </button>
                 {activeDropdown === "best-sellers" && (
-                  <div className="absolute left-1/2 -translate-x-1/2 top-full mt-4 w-[900px] bg-background border shadow-xl p-8 z-50 animate-[slide-down_0.3s_ease-out]">
+                  <div className="absolute left-1/2 -translate-x-1/2 top-full mt-0 w-[900px] bg-background border shadow-xl p-8 z-50 animate-[slide-down_0.3s_ease-out]">
                     <div className="grid grid-cols-4 gap-6">
                       {dropdownProducts.map((product, idx) => (
                         <div key={idx} className="group cursor-pointer text-center">
@@ -217,9 +219,11 @@ const Header = () => {
                               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                             />
                           </div>
-                          <h4 className="text-sm font-serif mb-2">{product.name}</h4>
+                          <h4 className="text-sm font-medium mb-2">{product.name}</h4>
                           <button className="mx-auto w-10 h-10 rounded-full border-2 border-foreground flex items-center justify-center hover:bg-foreground hover:text-background transition-all">
-                            <ArrowUpRight size={18} />
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                              <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                            </svg>
                           </button>
                         </div>
                       ))}
@@ -234,12 +238,12 @@ const Header = () => {
                 onMouseEnter={() => setActiveDropdown("collections")}
                 onMouseLeave={() => setActiveDropdown(null)}
               >
-                <button className="text-sm font-medium tracking-wide hover:opacity-70 transition-opacity flex items-center gap-1">
+                <button className="text-sm font-medium tracking-wide hover:text-[#D4AF37] transition-colors flex items-center gap-1">
                   COLLECTIONS
-                  <ChevronDown size={14} />
+                  <ChevronDown size={14} className="text-muted-foreground" />
                 </button>
                 {activeDropdown === "collections" && (
-                  <div className="absolute left-1/2 -translate-x-1/2 top-full mt-4 w-[900px] bg-background border shadow-xl p-8 z-50 animate-[slide-down_0.3s_ease-out]">
+                  <div className="absolute left-1/2 -translate-x-1/2 top-full mt-0 w-[900px] bg-background border shadow-xl p-8 z-50 animate-[slide-down_0.3s_ease-out]">
                     <div className="grid grid-cols-4 gap-6">
                       {dropdownProducts.map((product, idx) => (
                         <div key={idx} className="group cursor-pointer text-center">
@@ -250,9 +254,11 @@ const Header = () => {
                               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                             />
                           </div>
-                          <h4 className="text-sm font-serif mb-2">{product.name}</h4>
+                          <h4 className="text-sm font-medium mb-2">{product.name}</h4>
                           <button className="mx-auto w-10 h-10 rounded-full border-2 border-foreground flex items-center justify-center hover:bg-foreground hover:text-background transition-all">
-                            <ArrowUpRight size={18} />
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                              <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                            </svg>
                           </button>
                         </div>
                       ))}

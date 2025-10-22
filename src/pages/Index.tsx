@@ -1,7 +1,9 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import HeroBanner from "@/components/HeroBanner";
-import TrendingProducts from "@/components/TrendingProducts";
+import BestSellersSection from "@/components/BestSellersSection";
+import CategorySection from "@/components/CategorySection";
+import TrendingSection from "@/components/TrendingSection";
 import CollectionsOverview from "@/components/CollectionsOverview";
 import Testimonials from "@/components/Testimonials";
 import FeaturesSection from "@/components/FeaturesSection";
@@ -32,7 +34,9 @@ const Index = () => {
       
       <main className="flex-1">
         <HeroBanner />
-        <TrendingProducts />
+        <BestSellersSection />
+        <CategorySection />
+        <TrendingSection />
         <CollectionsOverview />
         <ProductSection 
           title="Under $30" 

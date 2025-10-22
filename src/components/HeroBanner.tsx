@@ -22,7 +22,7 @@ const HeroBanner = () => {
           </p>
           <div className="flex gap-4 justify-center pt-4">
             <Button size="lg" className="bg-[#D4AF37] hover:bg-[#C19B2A] text-black font-semibold px-8">
-              PRE-ORDER NOW
+              SHOP NOW
             </Button>
           </div>
         </div>

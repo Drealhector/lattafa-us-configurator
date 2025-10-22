@@ -1,35 +1,52 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Menu, Search, ShoppingCart, User, X, ChevronDown, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "./ui/button";
 import lattafaLogo from "@/assets/lattafa-logo-extracted.png";
-import sapphireOud from "@/assets/sapphire-oud.jpg";
-import desertFalcon from "@/assets/desert-falcon.jpg";
-import spiceCaravan from "@/assets/spice-caravan.jpg";
-import roseMirage from "@/assets/rose-mirage.jpg";
-import candyNoir from "@/assets/candy-noir.jpg";
+import { supabase } from "@/integrations/supabase/client";
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [trendingIndex, setTrendingIndex] = useState(0);
+  const [trendingProducts, setTrendingProducts] = useState<any[]>([]);
+  const [newArrivals, setNewArrivals] = useState<any[]>([]);
+  const [bestSellers, setBestSellers] = useState<any[]>([]);
+  const [collections, setCollections] = useState<any[]>([]);
 
-  const trendingProducts = [
-    { name: "Sapphire Oud", image: sapphireOud, vendor: "Lattafa", price: "$49.99 USD" },
-    { name: "Desert Falcon", image: desertFalcon, vendor: "Lattafa", price: "From $14.99 USD" },
-    { name: "Spice Caravan", image: spiceCaravan, vendor: "Lattafa", price: "$49.99 USD" },
-    { name: "Rose Mirage", image: roseMirage, vendor: "Lattafa", price: "$44.99 USD" },
-    { name: "Candy Noir", image: candyNoir, vendor: "Lattafa", price: "From $29.99 USD" },
-  ];
+  useEffect(() => {
+    fetchProducts();
+  }, []);
 
-  const dropdownProducts = [
-    { name: "Art of Universe", image: sapphireOud },
-    { name: "Atheeri", image: desertFalcon },
-    { name: "Khamrah Dukhan", image: spiceCaravan },
-    { name: "Victoria", image: roseMirage },
-  ];
+  const fetchProducts = async () => {
+    const { data: trending } = await supabase
+      .from("products")
+      .select("*")
+      .eq("section", "trending")
+      .order("display_order", { ascending: true });
 
-  const totalPages = trendingProducts.length;
-  const currentPage = trendingIndex + 1;
+    const { data: arrivals } = await supabase
+      .from("products")
+      .select("*")
+      .eq("section", "new_arrivals")
+      .order("display_order", { ascending: true });
+
+    const { data: sellers } = await supabase
+      .from("products")
+      .select("*")
+      .eq("section", "best_sellers")
+      .order("display_order", { ascending: true });
+
+    const { data: collectionData } = await supabase
+      .from("products")
+      .select("*")
+      .eq("section", "collections")
+      .order("display_order", { ascending: true });
+
+    setTrendingProducts(trending || []);
+    setNewArrivals(arrivals || []);
+    setBestSellers(sellers || []);
+    setCollections(collectionData || []);
+  };
 
   return (
     <header className="sticky top-0 z-50 bg-background shadow-sm">
@@ -67,7 +84,7 @@ const Header = () => {
                   SHOP
                   <ChevronDown size={14} className="text-gray-500" />
                 </button>
-                {activeDropdown === "shop" && (
+                {activeDropdown === "shop" && trendingProducts.length > 0 && (
                   <div className="absolute left-1/2 -translate-x-1/2 top-full mt-0 w-[600px] bg-white border shadow-2xl z-[100] p-8">
                     {/* Trend This Week Carousel */}
                     <div className="w-full">
@@ -104,7 +121,7 @@ const Header = () => {
                           <div key={idx} className="group cursor-pointer text-center">
                             <div className="relative aspect-square overflow-hidden bg-gray-50 rounded mb-3">
                               <img
-                                src={product.image}
+                                src={product.image_url}
                                 alt={product.name}
                                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                               />
@@ -130,14 +147,14 @@ const Header = () => {
                   NEW ARRIVALS
                   <ChevronDown size={14} className="text-gray-500" />
                 </button>
-                {activeDropdown === "new-arrivals" && (
+                {activeDropdown === "new-arrivals" && newArrivals.length > 0 && (
                   <div className="absolute left-1/2 -translate-x-1/2 top-full mt-0 w-[900px] bg-white border shadow-2xl p-8 z-[100]">
                     <div className="grid grid-cols-4 gap-6">
-                      {dropdownProducts.map((product, idx) => (
+                      {newArrivals.map((product, idx) => (
                         <div key={idx} className="group cursor-pointer text-center">
                           <div className="relative aspect-square overflow-hidden bg-gray-100 rounded-2xl mb-3">
                             <img
-                              src={product.image}
+                              src={product.image_url}
                               alt={product.name}
                               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                             />
@@ -165,14 +182,14 @@ const Header = () => {
                   BEST SELLERS
                   <ChevronDown size={14} className="text-gray-500" />
                 </button>
-                {activeDropdown === "best-sellers" && (
+                {activeDropdown === "best-sellers" && bestSellers.length > 0 && (
                   <div className="absolute left-1/2 -translate-x-1/2 top-full mt-0 w-[900px] bg-white border shadow-2xl p-8 z-[100]">
                     <div className="grid grid-cols-4 gap-6">
-                      {dropdownProducts.map((product, idx) => (
+                      {bestSellers.map((product, idx) => (
                         <div key={idx} className="group cursor-pointer text-center">
                           <div className="relative aspect-square overflow-hidden bg-gray-100 rounded-2xl mb-3">
                             <img
-                              src={product.image}
+                              src={product.image_url}
                               alt={product.name}
                               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                             />
@@ -200,14 +217,14 @@ const Header = () => {
                   COLLECTIONS
                   <ChevronDown size={14} className="text-gray-500" />
                 </button>
-                {activeDropdown === "collections" && (
+                {activeDropdown === "collections" && collections.length > 0 && (
                   <div className="absolute left-1/2 -translate-x-1/2 top-full mt-0 w-[900px] bg-white border shadow-2xl p-8 z-[100]">
                     <div className="grid grid-cols-4 gap-6">
-                      {dropdownProducts.map((product, idx) => (
+                      {collections.map((product, idx) => (
                         <div key={idx} className="group cursor-pointer text-center">
                           <div className="relative aspect-square overflow-hidden bg-gray-100 rounded-2xl mb-3">
                             <img
-                              src={product.image}
+                              src={product.image_url}
                               alt={product.name}
                               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                             />

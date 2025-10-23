@@ -67,6 +67,19 @@ All colors MUST be HSL.
     }
   }
 
+  /* Shimmer animation for button */
+  @keyframes shimmer {
+    0% {
+      box-shadow: 0 0 20px rgba(212, 175, 55, 0.5), inset 0 0 20px rgba(255, 255, 255, 0.1);
+    }
+    50% {
+      box-shadow: 0 0 40px rgba(255, 215, 0, 0.8), inset 0 0 30px rgba(255, 255, 255, 0.3);
+    }
+    100% {
+      box-shadow: 0 0 20px rgba(212, 175, 55, 0.5), inset 0 0 20px rgba(255, 255, 255, 0.1);
+    }
+  }
+
   .dark {
     --background: 0 0% 0%;
     --foreground: 0 0% 100%;

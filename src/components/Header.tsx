@@ -146,7 +146,6 @@ const Header = () => {
                             </svg>
                           </button>
                         </div>)}
-                      {[1, 2, 3, 4].map(i => {})}
                     </div>
                   </div>}
               </div>

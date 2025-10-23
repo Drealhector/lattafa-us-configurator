@@ -1,61 +1,60 @@
 import ProductCard from "./ProductCard";
-import sapphireOud from "@/assets/sapphire-oud.jpg";
-import desertFalcon from "@/assets/desert-falcon.jpg";
-import spiceCaravan from "@/assets/spice-caravan.jpg";
-import roseMirage from "@/assets/rose-mirage.jpg";
-import candyNoir from "@/assets/candy-noir.jpg";
-import pinkDusk from "@/assets/pink-dusk.jpg";
+import chocoOverdose from "@/assets/choco-overdose.jpg";
+import berryOnTop from "@/assets/berry-on-top.jpg";
+import vanillaFreak from "@/assets/vanilla-freak.jpg";
+import cookieCrave from "@/assets/cookie-crave.jpg";
+import whippedPleasure from "@/assets/whipped-pleasure.jpg";
+import herConfession from "@/assets/her-confession.jpg";
 
 const TrendingProducts = () => {
   const products = [
     {
-      name: "Sapphire Oud",
-      image: sapphireOud,
-      price: "$49.99",
-      rating: 5,
-      reviewsCount: 5,
-      status: "sold out",
-      tags: ["Men", "Trending"],
-    },
-    {
-      name: "Desert Falcon",
-      image: desertFalcon,
-      price: "From $14.99",
-      rating: 4.5,
-      reviewsCount: 42,
-      tags: ["Men", "Trending"],
-    },
-    {
-      name: "Spice Caravan",
-      image: spiceCaravan,
-      price: "$49.99",
-      rating: 4.8,
-      reviewsCount: 50,
-      tags: ["Unisex", "Trending"],
-    },
-    {
-      name: "Rose Mirage",
-      image: roseMirage,
-      price: "$44.99",
-      rating: 4.0,
-      reviewsCount: 5,
-      tags: ["Women", "Trending"],
-    },
-    {
-      name: "Candy Noir",
-      image: candyNoir,
-      price: "From $29.99",
-      rating: 4.2,
-      reviewsCount: 12,
-      tags: ["Women", "Trending"],
-    },
-    {
-      name: "Pink Dusk",
-      image: pinkDusk,
+      name: "Choco Overdose - Give Me Gourmand",
+      image: chocoOverdose,
       price: "$39.99",
-      rating: 4.0,
-      reviewsCount: 4,
+      rating: 5,
+      reviewsCount: 124,
       tags: ["Unisex", "Trending"],
+    },
+    {
+      name: "Berry On Top - Give Me Gourmand",
+      image: berryOnTop,
+      price: "$39.99",
+      rating: 4.8,
+      reviewsCount: 98,
+      tags: ["Women", "Trending"],
+    },
+    {
+      name: "Vanilla Freak - Give Me Gourmand",
+      image: vanillaFreak,
+      price: "$39.99",
+      rating: 4.9,
+      reviewsCount: 156,
+      tags: ["Unisex", "Trending"],
+    },
+    {
+      name: "Cookie Crave - Give Me Gourmand",
+      image: cookieCrave,
+      price: "$39.99",
+      rating: 4.7,
+      reviewsCount: 87,
+      tags: ["Unisex", "Trending"],
+    },
+    {
+      name: "Whipped Pleasure - Give Me Gourmand",
+      image: whippedPleasure,
+      price: "$39.99",
+      rating: 4.8,
+      reviewsCount: 112,
+      tags: ["Women", "Trending"],
+    },
+    {
+      name: "Her Confession",
+      image: herConfession,
+      price: "$59.99",
+      rating: 5.0,
+      reviewsCount: 203,
+      tags: ["Women", "Trending"],
     },
   ];
 

@@ -1,20 +1,20 @@
 import { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import sapphireOud from "@/assets/sapphire-oud.jpg";
-import desertFalcon from "@/assets/desert-falcon.jpg";
-import spiceCaravan from "@/assets/spice-caravan.jpg";
-import roseMirage from "@/assets/rose-mirage.jpg";
-import candyNoir from "@/assets/candy-noir.jpg";
+import chocoOverdose from "@/assets/choco-overdose.jpg";
+import berryOnTop from "@/assets/berry-on-top.jpg";
+import vanillaFreak from "@/assets/vanilla-freak.jpg";
+import cookieCrave from "@/assets/cookie-crave.jpg";
+import whippedPleasure from "@/assets/whipped-pleasure.jpg";
 
 const TrendingSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const products = [
-    { name: "Sapphire Oud", image: sapphireOud, price: "$49.99 USD", vendor: "Lattafa" },
-    { name: "Desert Falcon", image: desertFalcon, price: "From $14.99 USD", vendor: "Lattafa" },
-    { name: "Spice Caravan", image: spiceCaravan, price: "$49.99 USD", vendor: "Lattafa" },
-    { name: "Rose Mirage", image: roseMirage, price: "$44.99 USD", vendor: "Lattafa" },
-    { name: "Candy Noir", image: candyNoir, price: "From $29.99 USD", vendor: "Lattafa" },
+    { name: "Choco Overdose - Give Me Gourmand", image: chocoOverdose, price: "$39.99", vendor: "Lattafa" },
+    { name: "Berry On Top - Give Me Gourmand", image: berryOnTop, price: "$39.99", vendor: "Lattafa" },
+    { name: "Vanilla Freak - Give Me Gourmand", image: vanillaFreak, price: "$39.99", vendor: "Lattafa" },
+    { name: "Cookie Crave - Give Me Gourmand", image: cookieCrave, price: "$39.99", vendor: "Lattafa" },
+    { name: "Whipped Pleasure - Give Me Gourmand", image: whippedPleasure, price: "$39.99", vendor: "Lattafa" },
   ];
 
   const handlePrev = () => {

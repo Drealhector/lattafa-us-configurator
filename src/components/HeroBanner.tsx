@@ -1,38 +1,22 @@
 import { Button } from "./ui/button";
-import heroBannerBg from "@/assets/hero-banner-bg.jpg";
-import chocoOverdose from "@/assets/choco-overdose-hero.png";
-import vanillaFreak from "@/assets/vanilla-freak-hero.png";
+import heroProductsDuo from "@/assets/hero-products-duo.png";
 
 const HeroBanner = () => {
   return (
     <section className="relative h-[600px] overflow-hidden bg-black">
       <div
-        className="absolute inset-0 bg-cover bg-center opacity-90"
-        style={{ backgroundImage: `url(${heroBannerBg})` }}
+        className="absolute inset-0 bg-cover bg-center"
+        style={{ backgroundImage: `url(${heroProductsDuo})` }}
       >
-        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/40" />
       </div>
       
       <div className="relative h-full container mx-auto px-4 flex items-center justify-center text-center">
-        {/* Product Images - Side by Side with Tilt */}
-        <div className="absolute inset-0 flex items-center justify-center gap-8 pointer-events-none">
-          <img 
-            src={chocoOverdose} 
-            alt="Choco Overdose" 
-            className="h-[400px] w-auto object-contain transform -rotate-6 translate-x-8"
-          />
-          <img 
-            src={vanillaFreak} 
-            alt="Vanilla Freak" 
-            className="h-[400px] w-auto object-contain transform rotate-6 -translate-x-8"
-          />
-        </div>
-
-        <div className="relative z-10 max-w-3xl space-y-6">
-          <h1 className="font-serif text-5xl md:text-7xl font-bold text-white tracking-wider drop-shadow-2xl">
+        <div className="max-w-3xl space-y-6">
+          <h1 className="font-serif text-5xl md:text-7xl font-bold text-white tracking-wider drop-shadow-[0_4px_8px_rgba(0,0,0,0.8)]">
             TOGETHER WE'RE TROUBLE
           </h1>
-          <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto drop-shadow-lg">
+          <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
             Two fragrances designed to pull you closer and keep you there.<br />
             Strong alone. Dangerous together.
           </p>
@@ -45,12 +29,12 @@ const HeroBanner = () => {
       </div>
       
       {/* Product Labels */}
-      <div className="absolute bottom-12 left-12 text-white drop-shadow-lg">
+      <div className="absolute bottom-12 left-12 text-white drop-shadow-[0_3px_6px_rgba(0,0,0,0.8)]">
         <h2 className="font-serif text-3xl md:text-5xl font-light tracking-wider">CHOCO</h2>
         <p className="font-serif text-xl md:text-3xl font-light tracking-wider">OVERDOSE</p>
       </div>
       
-      <div className="absolute bottom-12 right-12 text-white text-right drop-shadow-lg">
+      <div className="absolute bottom-12 right-12 text-white text-right drop-shadow-[0_3px_6px_rgba(0,0,0,0.8)]">
         <h2 className="font-serif text-3xl md:text-5xl font-light tracking-wider">VANILLA</h2>
         <p className="font-serif text-xl md:text-2xl font-light italic tracking-wider mt-2">Freak</p>
       </div>

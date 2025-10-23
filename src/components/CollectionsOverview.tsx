@@ -1,16 +1,14 @@
-import oudRoyale from "@/assets/collection-oud-royale.jpg";
-import desertLuxe from "@/assets/collection-desert-luxe.jpg";
-import imperialLeather from "@/assets/collection-imperial-leather.jpg";
-import spiceBlend from "@/assets/collection-spice-blend.jpg";
-import signaturePride from "@/assets/collection-signature-pride.jpg";
+import yara from "@/assets/yara.jpg";
+import khamrah from "@/assets/khamrah.jpg";
+import herConfession from "@/assets/her-confession.jpg";
+import whippedPleasure from "@/assets/whipped-pleasure.jpg";
 
 const CollectionsOverview = () => {
   const collections = [
-    { name: "Oud Royale", itemCount: 7, image: oudRoyale },
-    { name: "Desert Luxe", itemCount: 7, image: desertLuxe },
-    { name: "Imperial Leather", itemCount: 5, image: imperialLeather },
-    { name: "Spice Blend", itemCount: 5, image: spiceBlend },
-    { name: "Signature Pride", itemCount: 58, image: signaturePride },
+    { name: "Yara Collection", itemCount: 1, image: yara },
+    { name: "Khamrah Collection", itemCount: 1, image: khamrah },
+    { name: "Her Confession", itemCount: 1, image: herConfession },
+    { name: "Give Me Gourmand", itemCount: 5, image: whippedPleasure },
   ];
 
   return (

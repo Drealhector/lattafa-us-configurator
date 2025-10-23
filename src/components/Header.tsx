@@ -3,6 +3,32 @@ import { Menu, Search, ShoppingCart, User, X, ChevronDown, ChevronLeft, ChevronR
 import { Button } from "./ui/button";
 import lattafaLogo from "@/assets/lattafa-logo-extracted.png";
 import { supabase } from "@/integrations/supabase/client";
+
+// Import product images
+import chocoOverdoseImg from "@/assets/choco-overdose.jpg";
+import berryOnTopImg from "@/assets/berry-on-top.jpg";
+import vanillaFreakImg from "@/assets/vanilla-freak.jpg";
+import cookieCraveImg from "@/assets/cookie-crave.jpg";
+import whippedPleasureImg from "@/assets/whipped-pleasure.jpg";
+import herConfessionImg from "@/assets/her-confession.jpg";
+import yaraImg from "@/assets/yara.jpg";
+import khamrahImg from "@/assets/khamrah.jpg";
+import qaedAlFursanImg from "@/assets/qaed-al-fursan.jpg";
+import asadImg from "@/assets/asad.jpg";
+
+// Image mapping for fallback
+const imageMap: Record<string, string> = {
+  "choco-overdose.jpg": chocoOverdoseImg,
+  "berry-on-top.jpg": berryOnTopImg,
+  "vanilla-freak.jpg": vanillaFreakImg,
+  "cookie-crave.jpg": cookieCraveImg,
+  "whipped-pleasure.jpg": whippedPleasureImg,
+  "her-confession.jpg": herConfessionImg,
+  "yara.jpg": yaraImg,
+  "khamrah.jpg": khamrahImg,
+  "qaed-al-fursan.jpg": qaedAlFursanImg,
+  "asad.jpg": asadImg,
+};
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
@@ -35,10 +61,17 @@ const Header = () => {
     } = await supabase.from("products").select("*").eq("section", "collections").order("display_order", {
       ascending: true
     });
-    setTrendingProducts(trending || []);
-    setNewArrivals(arrivals || []);
-    setBestSellers(sellers || []);
-    setCollections(collectionData || []);
+    
+    // Map images to local assets
+    const mapImageUrl = (product: any) => {
+      const fileName = product.image_url?.split('/').pop() || '';
+      return imageMap[fileName] || product.image_url;
+    };
+    
+    setTrendingProducts((trending || []).map(p => ({ ...p, image_url: mapImageUrl(p) })));
+    setNewArrivals((arrivals || []).map(p => ({ ...p, image_url: mapImageUrl(p) })));
+    setBestSellers((sellers || []).map(p => ({ ...p, image_url: mapImageUrl(p) })));
+    setCollections((collectionData || []).map(p => ({ ...p, image_url: mapImageUrl(p) })));
   };
   return <header className="sticky top-0 z-50 bg-background shadow-sm">
       {/* Animated Top Bar - Brown with scrolling text */}

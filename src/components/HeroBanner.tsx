@@ -1,14 +1,18 @@
 import { Button } from "./ui/button";
-import heroProductsDuo from "@/assets/hero-products-duo.png";
+import heroProductsDuo from "@/assets/hero-duo-products.png";
 
 const HeroBanner = () => {
   return (
-    <section className="relative h-[600px] overflow-hidden bg-black">
+    <section className="relative h-[600px] w-full overflow-hidden bg-black">
       <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: `url(${heroProductsDuo})` }}
+        className="absolute inset-0 w-full h-full bg-cover bg-center"
+        style={{ 
+          backgroundImage: `url(${heroProductsDuo})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center'
+        }}
       >
-        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/40" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/30" />
       </div>
       
       <div className="relative h-full container mx-auto px-4 flex items-center justify-center text-center">

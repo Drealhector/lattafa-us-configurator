@@ -28,9 +28,6 @@ const Index = () => {
         <CategoryCarouselSection title="Niche Emarati" section="niche_emarati" />
         <Under30Section />
         <BundlesSection />
-        <CategoryCarouselSection title="Personal Care" section="personal_care" />
-        <CategoryCarouselSection title="Home Care" section="home_care" />
-        <CategoryCarouselSection title="Gift Sets" section="gift_sets" />
         <Testimonials />
         <FeaturesSection />
       </main>

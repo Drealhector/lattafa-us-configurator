@@ -14,7 +14,7 @@ interface CategoryCarouselSectionProps {
 const CategoryCarouselSection = ({ 
   title, 
   section,
-  itemsPerView = 6 
+  itemsPerView = 4 
 }: CategoryCarouselSectionProps) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [products, setProducts] = useState<any[]>([]);
@@ -54,33 +54,42 @@ const CategoryCarouselSection = ({
   if (products.length === 0) return null;
 
   return (
-    <section className="py-16 bg-background">
+    <section className="py-12 bg-background">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between mb-8">
-          <h2 className="font-serif text-3xl font-bold">{title}</h2>
+          <div>
+            <h2 className="font-serif text-3xl font-bold mb-2">{title}</h2>
+            <p className="text-muted-foreground text-sm">
+              What you want when you want it in an instant.
+            </p>
+          </div>
           <div className="flex gap-2">
             <Button
               variant="outline"
               size="icon"
               onClick={handlePrev}
               disabled={currentIndex === 0}
+              className="rounded-full h-10 w-10"
             >
-              <ChevronLeft className="h-4 w-4" />
+              <ChevronLeft className="h-5 w-5" />
             </Button>
             <Button
               variant="outline"
               size="icon"
               onClick={handleNext}
               disabled={currentIndex >= products.length - itemsPerView}
+              className="rounded-full h-10 w-10"
             >
-              <ChevronRight className="h-4 w-4" />
+              <ChevronRight className="h-5 w-5" />
             </Button>
           </div>
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-6">
-          {products.slice(currentIndex, currentIndex + itemsPerView).map((product) => (
-            <ProductCard key={product.id} {...product} />
-          ))}
+        <div className="relative">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {products.slice(currentIndex, currentIndex + itemsPerView).map((product) => (
+              <ProductCard key={product.id} {...product} />
+            ))}
+          </div>
         </div>
       </div>
     </section>

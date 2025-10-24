@@ -1,62 +1,34 @@
+import { useEffect, useState } from "react";
 import ProductCard from "./ProductCard";
-import chocoOverdose from "@/assets/choco-overdose.jpg";
-import berryOnTop from "@/assets/berry-on-top.jpg";
-import vanillaFreak from "@/assets/vanilla-freak.jpg";
-import cookieCrave from "@/assets/cookie-crave.jpg";
-import whippedPleasure from "@/assets/whipped-pleasure.jpg";
-import herConfession from "@/assets/her-confession.jpg";
+import { supabase } from "@/integrations/supabase/client";
 
 const TrendingProducts = () => {
-  const products = [
-    {
-      name: "Choco Overdose - Give Me Gourmand",
-      image: chocoOverdose,
-      price: "$39.99",
-      rating: 5,
-      reviewsCount: 124,
-      tags: ["Unisex", "Trending"],
-    },
-    {
-      name: "Berry On Top - Give Me Gourmand",
-      image: berryOnTop,
-      price: "$39.99",
-      rating: 4.8,
-      reviewsCount: 98,
-      tags: ["Women", "Trending"],
-    },
-    {
-      name: "Vanilla Freak - Give Me Gourmand",
-      image: vanillaFreak,
-      price: "$39.99",
-      rating: 4.9,
-      reviewsCount: 156,
-      tags: ["Unisex", "Trending"],
-    },
-    {
-      name: "Cookie Crave - Give Me Gourmand",
-      image: cookieCrave,
-      price: "$39.99",
-      rating: 4.7,
-      reviewsCount: 87,
-      tags: ["Unisex", "Trending"],
-    },
-    {
-      name: "Whipped Pleasure - Give Me Gourmand",
-      image: whippedPleasure,
-      price: "$39.99",
-      rating: 4.8,
-      reviewsCount: 112,
-      tags: ["Women", "Trending"],
-    },
-    {
-      name: "Her Confession",
-      image: herConfession,
-      price: "$59.99",
-      rating: 5.0,
-      reviewsCount: 203,
-      tags: ["Women", "Trending"],
-    },
-  ];
+  const [products, setProducts] = useState<any[]>([]);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const { data } = await supabase
+        .from('products')
+        .select('*')
+        .eq('section', 'new_arrivals')
+        .order('display_order', { ascending: true })
+        .limit(6);
+      
+      if (data) {
+        setProducts(data.map(p => ({
+          name: p.name,
+          image: p.image_url,
+          price: p.price,
+          vendor: p.vendor,
+          rating: 5,
+          reviewsCount: 100,
+          tags: ["Trending"],
+        })));
+      }
+    };
+    
+    fetchProducts();
+  }, []);
 
   return (
     <section className="py-16">

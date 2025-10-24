@@ -1,49 +1,35 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "./ui/button";
 import ProductCard from "./ProductCard";
-import yara from "@/assets/yara.jpg";
-import khamrah from "@/assets/khamrah.jpg";
-import qaedAlFursan from "@/assets/qaed-al-fursan.jpg";
-import asad from "@/assets/asad.jpg";
+import { supabase } from "@/integrations/supabase/client";
 
 const BestSellersSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [products, setProducts] = useState<any[]>([]);
 
-  const products = [
-    {
-      name: "Yara",
-      image: yara,
-      price: "$49.99",
-      vendor: "Lattafa",
-      rating: 5.0,
-      reviewsCount: 342,
-    },
-    {
-      name: "Khamrah",
-      image: khamrah,
-      price: "$54.99",
-      vendor: "Lattafa",
-      rating: 4.9,
-      reviewsCount: 428,
-    },
-    {
-      name: "Qaed Al Fursan",
-      image: qaedAlFursan,
-      price: "$64.99",
-      vendor: "Lattafa",
-      rating: 4.8,
-      reviewsCount: 215,
-    },
-    {
-      name: "Asad",
-      image: asad,
-      price: "$59.99",
-      vendor: "Lattafa",
-      rating: 4.9,
-      reviewsCount: 298,
-    },
-  ];
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const { data } = await supabase
+        .from('products')
+        .select('*')
+        .eq('section', 'best_sellers')
+        .order('display_order', { ascending: true });
+      
+      if (data) {
+        setProducts(data.map(p => ({
+          name: p.name,
+          image: p.image_url,
+          price: p.price,
+          vendor: p.vendor,
+          rating: 5.0,
+          reviewsCount: 100,
+        })));
+      }
+    };
+    
+    fetchProducts();
+  }, []);
 
   const handlePrev = () => {
     setCurrentIndex(Math.max(0, currentIndex - 1));

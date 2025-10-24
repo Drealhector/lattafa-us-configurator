@@ -1,21 +1,32 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import chocoOverdose from "@/assets/choco-overdose.jpg";
-import berryOnTop from "@/assets/berry-on-top.jpg";
-import vanillaFreak from "@/assets/vanilla-freak.jpg";
-import cookieCrave from "@/assets/cookie-crave.jpg";
-import whippedPleasure from "@/assets/whipped-pleasure.jpg";
+import { supabase } from "@/integrations/supabase/client";
 
 const TrendingSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [products, setProducts] = useState<any[]>([]);
 
-  const products = [
-    { name: "Choco Overdose - Give Me Gourmand", image: chocoOverdose, price: "$39.99", vendor: "Lattafa" },
-    { name: "Berry On Top - Give Me Gourmand", image: berryOnTop, price: "$39.99", vendor: "Lattafa" },
-    { name: "Vanilla Freak - Give Me Gourmand", image: vanillaFreak, price: "$39.99", vendor: "Lattafa" },
-    { name: "Cookie Crave - Give Me Gourmand", image: cookieCrave, price: "$39.99", vendor: "Lattafa" },
-    { name: "Whipped Pleasure - Give Me Gourmand", image: whippedPleasure, price: "$39.99", vendor: "Lattafa" },
-  ];
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const { data } = await supabase
+        .from('products')
+        .select('*')
+        .eq('section', 'trending')
+        .order('display_order', { ascending: true })
+        .limit(10);
+      
+      if (data) {
+        setProducts(data.map(p => ({
+          name: p.name,
+          image: p.image_url,
+          price: p.price,
+          vendor: p.vendor,
+        })));
+      }
+    };
+    
+    fetchProducts();
+  }, []);
 
   const handlePrev = () => {
     setCurrentIndex((prev) => Math.max(0, prev - 1));

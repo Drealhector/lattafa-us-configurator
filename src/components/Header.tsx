@@ -15,6 +15,7 @@ import yaraImg from "@/assets/yara.jpg";
 import khamrahImg from "@/assets/khamrah.jpg";
 import qaedAlFursanImg from "@/assets/qaed-al-fursan.jpg";
 import asadImg from "@/assets/asad.jpg";
+import layaanImg from "@/assets/layaan.jpg";
 
 // Image mapping for fallback
 const imageMap: Record<string, string> = {
@@ -28,6 +29,7 @@ const imageMap: Record<string, string> = {
   "khamrah.jpg": khamrahImg,
   "qaed-al-fursan.jpg": qaedAlFursanImg,
   "asad.jpg": asadImg,
+  "layaan.jpg": layaanImg,
 };
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);

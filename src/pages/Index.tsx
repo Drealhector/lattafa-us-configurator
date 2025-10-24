@@ -7,6 +7,7 @@ import TrendingProducts from "@/components/TrendingProducts";
 import CollectionsOverview from "@/components/CollectionsOverview";
 import Testimonials from "@/components/Testimonials";
 import FeaturesSection from "@/components/FeaturesSection";
+import Under30Section from "@/components/Under30Section";
 const Index = () => {
   return <div className="min-h-screen flex flex-col">
       <Header />
@@ -17,6 +18,7 @@ const Index = () => {
         <TrendingProducts />
         <TrendingSection />
         <CollectionsOverview />
+        <Under30Section />
         <Testimonials />
         <FeaturesSection />
       </main>

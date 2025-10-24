@@ -57,6 +57,9 @@ const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [trendingIndex, setTrendingIndex] = useState(0);
+  const [arrivalsIndex, setArrivalsIndex] = useState(0);
+  const [sellersIndex, setSellersIndex] = useState(0);
+  const [collectionsIndex, setCollectionsIndex] = useState(0);
   const [trendingProducts, setTrendingProducts] = useState<any[]>([]);
   const [newArrivals, setNewArrivals] = useState<any[]>([]);
   const [bestSellers, setBestSellers] = useState<any[]>([]);
@@ -173,20 +176,27 @@ const Header = () => {
                   NEW ARRIVALS
                   <ChevronDown size={14} className="text-gray-500" />
                 </button>
-                {activeDropdown === "new-arrivals" && newArrivals.length > 0 && <div className="absolute left-1/2 -translate-x-1/2 top-full mt-0 w-[1200px] bg-white border shadow-2xl p-8 z-[100]">
-                    <div className="flex gap-6 overflow-x-auto">
-                      {newArrivals.map((product, idx) => <div key={idx} onClick={() => navigate(`/product/${product.id}`)} className="group cursor-pointer text-center flex-shrink-0 w-[200px]">
+                {activeDropdown === "new-arrivals" && newArrivals.length > 0 && <div className="absolute left-1/2 -translate-x-1/2 top-full mt-0 w-[900px] bg-white border shadow-2xl p-8 z-[100]">
+                    <div className="flex items-center justify-between mb-6">
+                      <h3 className="font-serif text-lg text-black">New Arrivals</h3>
+                      <div className="flex items-center gap-3">
+                        <span className="text-sm text-gray-500">{Math.floor(arrivalsIndex / 4) + 1}/{Math.ceil(newArrivals.length / 4)}</span>
+                        <button onClick={e => { e.stopPropagation(); setArrivalsIndex(Math.max(0, arrivalsIndex - 4)); }} disabled={arrivalsIndex === 0} className="disabled:opacity-30 hover:opacity-70 transition-opacity text-black" aria-label="Previous">
+                          <ChevronLeft size={20} />
+                        </button>
+                        <button onClick={e => { e.stopPropagation(); setArrivalsIndex(Math.min(newArrivals.length - 4, arrivalsIndex + 4)); }} disabled={arrivalsIndex >= newArrivals.length - 4} className="disabled:opacity-30 hover:opacity-70 transition-opacity text-black" aria-label="Next">
+                          <ChevronRight size={20} />
+                        </button>
+                      </div>
+                    </div>
+                    <div className="grid grid-cols-4 gap-6">
+                      {newArrivals.slice(arrivalsIndex, arrivalsIndex + 4).map((product, idx) => <div key={idx} onClick={() => navigate(`/product/${product.id}`)} className="group cursor-pointer text-center">
                           <div className="relative aspect-square overflow-hidden bg-gray-100 rounded-2xl mb-3">
                             <img src={product.image_url} alt={product.name} className="w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-0" />
                             {product.image_url_2 && <img src={product.image_url_2} alt={product.name} className="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-300 group-hover:opacity-100" />}
                           </div>
                           <h4 className="text-sm font-serif mb-2 text-black">{product.name}</h4>
-                          <p className="text-sm font-bold text-black mb-2">{product.price}</p>
-                          <button onClick={(e) => { e.stopPropagation(); navigate(`/product/${product.id}`); }} className="mx-auto w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200 transition-all">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                              <path d="M7 17L17 7M17 7H7M17 7V17" />
-                            </svg>
-                          </button>
+                          <p className="text-sm font-bold text-black">{product.price}</p>
                         </div>)}
                     </div>
                   </div>}
@@ -198,20 +208,27 @@ const Header = () => {
                   BEST SELLERS
                   <ChevronDown size={14} className="text-gray-500" />
                 </button>
-                {activeDropdown === "best-sellers" && bestSellers.length > 0 && <div className="absolute left-1/2 -translate-x-1/2 top-full mt-0 w-[1200px] bg-white border shadow-2xl p-8 z-[100]">
-                    <div className="flex gap-6 overflow-x-auto">
-                      {bestSellers.map((product, idx) => <div key={idx} onClick={() => navigate(`/product/${product.id}`)} className="group cursor-pointer text-center flex-shrink-0 w-[200px]">
+                {activeDropdown === "best-sellers" && bestSellers.length > 0 && <div className="absolute left-1/2 -translate-x-1/2 top-full mt-0 w-[900px] bg-white border shadow-2xl p-8 z-[100]">
+                    <div className="flex items-center justify-between mb-6">
+                      <h3 className="font-serif text-lg text-black">Best Sellers</h3>
+                      <div className="flex items-center gap-3">
+                        <span className="text-sm text-gray-500">{Math.floor(sellersIndex / 4) + 1}/{Math.ceil(bestSellers.length / 4)}</span>
+                        <button onClick={e => { e.stopPropagation(); setSellersIndex(Math.max(0, sellersIndex - 4)); }} disabled={sellersIndex === 0} className="disabled:opacity-30 hover:opacity-70 transition-opacity text-black" aria-label="Previous">
+                          <ChevronLeft size={20} />
+                        </button>
+                        <button onClick={e => { e.stopPropagation(); setSellersIndex(Math.min(bestSellers.length - 4, sellersIndex + 4)); }} disabled={sellersIndex >= bestSellers.length - 4} className="disabled:opacity-30 hover:opacity-70 transition-opacity text-black" aria-label="Next">
+                          <ChevronRight size={20} />
+                        </button>
+                      </div>
+                    </div>
+                    <div className="grid grid-cols-4 gap-6">
+                      {bestSellers.slice(sellersIndex, sellersIndex + 4).map((product, idx) => <div key={idx} onClick={() => navigate(`/product/${product.id}`)} className="group cursor-pointer text-center">
                           <div className="relative aspect-square overflow-hidden bg-gray-100 rounded-2xl mb-3">
                             <img src={product.image_url} alt={product.name} className="w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-0" />
                             {product.image_url_2 && <img src={product.image_url_2} alt={product.name} className="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-300 group-hover:opacity-100" />}
                           </div>
                           <h4 className="text-sm font-serif mb-2 text-black">{product.name}</h4>
-                          <p className="text-sm font-bold text-black mb-2">{product.price}</p>
-                          <button onClick={(e) => { e.stopPropagation(); navigate(`/product/${product.id}`); }} className="mx-auto w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200 transition-all">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                              <path d="M7 17L17 7M17 7H7M17 7V17" />
-                            </svg>
-                          </button>
+                          <p className="text-sm font-bold text-black">{product.price}</p>
                         </div>)}
                     </div>
                   </div>}
@@ -223,20 +240,27 @@ const Header = () => {
                   COLLECTIONS
                   <ChevronDown size={14} className="text-gray-500" />
                 </button>
-                {activeDropdown === "collections" && collections.length > 0 && <div className="absolute left-1/2 -translate-x-1/2 top-full mt-0 w-[1200px] bg-white border shadow-2xl p-8 z-[100]">
-                    <div className="flex gap-6 overflow-x-auto">
-                      {collections.map((product, idx) => <div key={idx} onClick={() => navigate(`/product/${product.id}`)} className="group cursor-pointer text-center flex-shrink-0 w-[200px]">
+                {activeDropdown === "collections" && collections.length > 0 && <div className="absolute left-1/2 -translate-x-1/2 top-full mt-0 w-[900px] bg-white border shadow-2xl p-8 z-[100]">
+                    <div className="flex items-center justify-between mb-6">
+                      <h3 className="font-serif text-lg text-black">Collections</h3>
+                      <div className="flex items-center gap-3">
+                        <span className="text-sm text-gray-500">{Math.floor(collectionsIndex / 4) + 1}/{Math.ceil(collections.length / 4)}</span>
+                        <button onClick={e => { e.stopPropagation(); setCollectionsIndex(Math.max(0, collectionsIndex - 4)); }} disabled={collectionsIndex === 0} className="disabled:opacity-30 hover:opacity-70 transition-opacity text-black" aria-label="Previous">
+                          <ChevronLeft size={20} />
+                        </button>
+                        <button onClick={e => { e.stopPropagation(); setCollectionsIndex(Math.min(collections.length - 4, collectionsIndex + 4)); }} disabled={collectionsIndex >= collections.length - 4} className="disabled:opacity-30 hover:opacity-70 transition-opacity text-black" aria-label="Next">
+                          <ChevronRight size={20} />
+                        </button>
+                      </div>
+                    </div>
+                    <div className="grid grid-cols-4 gap-6">
+                      {collections.slice(collectionsIndex, collectionsIndex + 4).map((product, idx) => <div key={idx} onClick={() => navigate(`/product/${product.id}`)} className="group cursor-pointer text-center">
                           <div className="relative aspect-square overflow-hidden bg-gray-100 rounded-2xl mb-3">
                             <img src={product.image_url} alt={product.name} className="w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-0" />
                             {product.image_url_2 && <img src={product.image_url_2} alt={product.name} className="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-300 group-hover:opacity-100" />}
                           </div>
                           <h4 className="text-sm font-serif mb-2 text-black">{product.name}</h4>
-                          <p className="text-sm font-bold text-black mb-2">{product.price}</p>
-                          <button onClick={(e) => { e.stopPropagation(); navigate(`/product/${product.id}`); }} className="mx-auto w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200 transition-all">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                              <path d="M7 17L17 7M17 7H7M17 7V17" />
-                            </svg>
-                          </button>
+                          <p className="text-sm font-bold text-black">{product.price}</p>
                         </div>)}
                     </div>
                   </div>}

@@ -9,6 +9,7 @@ import Testimonials from "@/components/Testimonials";
 import FeaturesSection from "@/components/FeaturesSection";
 import Under30Section from "@/components/Under30Section";
 import BundlesSection from "@/components/BundlesSection";
+import CategoryCarouselSection from "@/components/CategoryCarouselSection";
 
 const Index = () => {
   return <div className="min-h-screen flex flex-col">
@@ -20,8 +21,16 @@ const Index = () => {
         <TrendingProducts />
         <TrendingSection />
         <CollectionsOverview />
+        <CategoryCarouselSection title="Men's Collection" section="men" />
+        <CategoryCarouselSection title="Women's Collection" section="women" />
+        <CategoryCarouselSection title="Unisex Collection" section="unisex" />
+        <CategoryCarouselSection title="Lattafa Pride" section="lattafa_pride" />
+        <CategoryCarouselSection title="Niche Emarati" section="niche_emarati" />
         <Under30Section />
         <BundlesSection />
+        <CategoryCarouselSection title="Personal Care" section="personal_care" />
+        <CategoryCarouselSection title="Home Care" section="home_care" />
+        <CategoryCarouselSection title="Gift Sets" section="gift_sets" />
         <Testimonials />
         <FeaturesSection />
       </main>

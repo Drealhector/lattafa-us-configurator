@@ -25,7 +25,7 @@ export type Database = {
           image_url_3: string | null
           name: string
           price: string
-          section: Database["public"]["Enums"]["product_section"]
+          section: string
           updated_at: string | null
           vendor: string
         }
@@ -39,7 +39,7 @@ export type Database = {
           image_url_3?: string | null
           name: string
           price: string
-          section: Database["public"]["Enums"]["product_section"]
+          section: string
           updated_at?: string | null
           vendor?: string
         }
@@ -53,7 +53,7 @@ export type Database = {
           image_url_3?: string | null
           name?: string
           price?: string
-          section?: Database["public"]["Enums"]["product_section"]
+          section?: string
           updated_at?: string | null
           vendor?: string
         }

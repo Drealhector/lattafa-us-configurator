@@ -18,8 +18,11 @@ export type Database = {
         Row: {
           created_at: string | null
           display_order: number | null
+          full_description: string | null
           id: string
           image_url: string
+          image_url_2: string | null
+          image_url_3: string | null
           name: string
           price: string
           section: Database["public"]["Enums"]["product_section"]
@@ -29,8 +32,11 @@ export type Database = {
         Insert: {
           created_at?: string | null
           display_order?: number | null
+          full_description?: string | null
           id?: string
           image_url: string
+          image_url_2?: string | null
+          image_url_3?: string | null
           name: string
           price: string
           section: Database["public"]["Enums"]["product_section"]
@@ -40,8 +46,11 @@ export type Database = {
         Update: {
           created_at?: string | null
           display_order?: number | null
+          full_description?: string | null
           id?: string
           image_url?: string
+          image_url_2?: string | null
+          image_url_3?: string | null
           name?: string
           price?: string
           section?: Database["public"]["Enums"]["product_section"]

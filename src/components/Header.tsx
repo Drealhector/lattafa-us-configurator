@@ -16,6 +16,16 @@ import khamrahImg from "@/assets/khamrah.jpg";
 import qaedAlFursanImg from "@/assets/qaed-al-fursan.jpg";
 import asadImg from "@/assets/asad.jpg";
 import layaanImg from "@/assets/layaan.jpg";
+import asadElixirImg from "@/assets/asad-elixir.jpg";
+import asadElixir2Img from "@/assets/asad-elixir-2.jpg";
+import yaraElixirImg from "@/assets/yara-elixir.jpg";
+import yaraElixir2Img from "@/assets/yara-elixir-2.jpg";
+import nasmaatImg from "@/assets/nasmaat.jpg";
+import nasmaat2Img from "@/assets/nasmaat-2.jpg";
+import nebrasElixirImg from "@/assets/nebras-elixir.jpg";
+import nebrasElixir2Img from "@/assets/nebras-elixir-2.jpg";
+import eclaireBanoffiImg from "@/assets/eclaire-banoffi.jpg";
+import eclaireBanoffi2Img from "@/assets/eclaire-banoffi-2.jpg";
 
 // Image mapping for fallback
 const imageMap: Record<string, string> = {
@@ -30,6 +40,16 @@ const imageMap: Record<string, string> = {
   "qaed-al-fursan.jpg": qaedAlFursanImg,
   "asad.jpg": asadImg,
   "layaan.jpg": layaanImg,
+  "asad-elixir.jpg": asadElixirImg,
+  "asad-elixir-2.jpg": asadElixir2Img,
+  "yara-elixir.jpg": yaraElixirImg,
+  "yara-elixir-2.jpg": yaraElixir2Img,
+  "nasmaat.jpg": nasmaatImg,
+  "nasmaat-2.jpg": nasmaat2Img,
+  "nebras-elixir.jpg": nebrasElixirImg,
+  "nebras-elixir-2.jpg": nebrasElixir2Img,
+  "eclaire-banoffi.jpg": eclaireBanoffiImg,
+  "eclaire-banoffi-2.jpg": eclaireBanoffi2Img,
 };
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -65,15 +85,21 @@ const Header = () => {
     });
     
     // Map images to local assets
-    const mapImageUrl = (product: any) => {
-      const fileName = product.image_url?.split('/').pop() || '';
-      return imageMap[fileName] || product.image_url;
+    const mapImageUrl = (url: string) => {
+      const fileName = url?.split('/').pop() || '';
+      return imageMap[fileName] || url;
     };
     
-    setTrendingProducts((trending || []).map(p => ({ ...p, image_url: mapImageUrl(p) })));
-    setNewArrivals((arrivals || []).map(p => ({ ...p, image_url: mapImageUrl(p) })));
-    setBestSellers((sellers || []).map(p => ({ ...p, image_url: mapImageUrl(p) })));
-    setCollections((collectionData || []).map(p => ({ ...p, image_url: mapImageUrl(p) })));
+    const mapProduct = (p: any) => ({
+      ...p,
+      image_url: mapImageUrl(p.image_url),
+      image_url_2: p.image_url_2 ? mapImageUrl(p.image_url_2) : null,
+    });
+    
+    setTrendingProducts((trending || []).map(mapProduct));
+    setNewArrivals((arrivals || []).map(mapProduct));
+    setBestSellers((sellers || []).map(mapProduct));
+    setCollections((collectionData || []).map(mapProduct));
   };
   return <header className="sticky top-0 z-50 bg-background shadow-sm">
       {/* Animated Top Bar - Brown with scrolling text */}
@@ -145,13 +171,15 @@ const Header = () => {
                   NEW ARRIVALS
                   <ChevronDown size={14} className="text-gray-500" />
                 </button>
-                {activeDropdown === "new-arrivals" && newArrivals.length > 0 && <div className="absolute left-1/2 -translate-x-1/2 top-full mt-0 w-[900px] bg-white border shadow-2xl p-8 z-[100]">
-                    <div className="grid grid-cols-4 gap-6">
-                      {newArrivals.map((product, idx) => <div key={idx} className="group cursor-pointer text-center">
+                {activeDropdown === "new-arrivals" && newArrivals.length > 0 && <div className="absolute left-1/2 -translate-x-1/2 top-full mt-0 w-[1200px] bg-white border shadow-2xl p-8 z-[100]">
+                    <div className="flex gap-6 overflow-x-auto">
+                      {newArrivals.map((product, idx) => <div key={idx} className="group cursor-pointer text-center flex-shrink-0 w-[200px]">
                           <div className="relative aspect-square overflow-hidden bg-gray-100 rounded-2xl mb-3">
-                            <img src={product.image_url} alt={product.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+                            <img src={product.image_url} alt={product.name} className="w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-0" />
+                            {product.image_url_2 && <img src={product.image_url_2} alt={product.name} className="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-300 group-hover:opacity-100" />}
                           </div>
                           <h4 className="text-sm font-serif mb-2 text-black">{product.name}</h4>
+                          <p className="text-sm font-bold text-black mb-2">{product.price}</p>
                           <button className="mx-auto w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200 transition-all">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                               <path d="M7 17L17 7M17 7H7M17 7V17" />
@@ -168,13 +196,15 @@ const Header = () => {
                   BEST SELLERS
                   <ChevronDown size={14} className="text-gray-500" />
                 </button>
-                {activeDropdown === "best-sellers" && bestSellers.length > 0 && <div className="absolute left-1/2 -translate-x-1/2 top-full mt-0 w-[900px] bg-white border shadow-2xl p-8 z-[100]">
-                    <div className="grid grid-cols-4 gap-6">
-                      {bestSellers.map((product, idx) => <div key={idx} className="group cursor-pointer text-center">
+                {activeDropdown === "best-sellers" && bestSellers.length > 0 && <div className="absolute left-1/2 -translate-x-1/2 top-full mt-0 w-[1200px] bg-white border shadow-2xl p-8 z-[100]">
+                    <div className="flex gap-6 overflow-x-auto">
+                      {bestSellers.map((product, idx) => <div key={idx} className="group cursor-pointer text-center flex-shrink-0 w-[200px]">
                           <div className="relative aspect-square overflow-hidden bg-gray-100 rounded-2xl mb-3">
-                            <img src={product.image_url} alt={product.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+                            <img src={product.image_url} alt={product.name} className="w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-0" />
+                            {product.image_url_2 && <img src={product.image_url_2} alt={product.name} className="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-300 group-hover:opacity-100" />}
                           </div>
                           <h4 className="text-sm font-serif mb-2 text-black">{product.name}</h4>
+                          <p className="text-sm font-bold text-black mb-2">{product.price}</p>
                           <button className="mx-auto w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200 transition-all">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                               <path d="M7 17L17 7M17 7H7M17 7V17" />
@@ -191,13 +221,15 @@ const Header = () => {
                   COLLECTIONS
                   <ChevronDown size={14} className="text-gray-500" />
                 </button>
-                {activeDropdown === "collections" && collections.length > 0 && <div className="absolute left-1/2 -translate-x-1/2 top-full mt-0 w-[900px] bg-white border shadow-2xl p-8 z-[100]">
-                    <div className="grid grid-cols-4 gap-6">
-                      {collections.map((product, idx) => <div key={idx} className="group cursor-pointer text-center">
+                {activeDropdown === "collections" && collections.length > 0 && <div className="absolute left-1/2 -translate-x-1/2 top-full mt-0 w-[1200px] bg-white border shadow-2xl p-8 z-[100]">
+                    <div className="flex gap-6 overflow-x-auto">
+                      {collections.map((product, idx) => <div key={idx} className="group cursor-pointer text-center flex-shrink-0 w-[200px]">
                           <div className="relative aspect-square overflow-hidden bg-gray-100 rounded-2xl mb-3">
-                            <img src={product.image_url} alt={product.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+                            <img src={product.image_url} alt={product.name} className="w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-0" />
+                            {product.image_url_2 && <img src={product.image_url_2} alt={product.name} className="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-300 group-hover:opacity-100" />}
                           </div>
                           <h4 className="text-sm font-serif mb-2 text-black">{product.name}</h4>
+                          <p className="text-sm font-bold text-black mb-2">{product.price}</p>
                           <button className="mx-auto w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200 transition-all">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                               <path d="M7 17L17 7M17 7H7M17 7V17" />

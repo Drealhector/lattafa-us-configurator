@@ -135,7 +135,7 @@ const Header = () => {
                   SHOP
                   <ChevronDown size={14} className="text-gray-500" />
                 </button>
-                {activeDropdown === "shop" && trendingProducts.length > 0 && <div className="absolute left-1/2 -translate-x-1/2 top-full mt-0 w-[600px] bg-white border shadow-2xl z-[100] p-8">
+                {activeDropdown === "shop" && trendingProducts.length > 0 && <div className="absolute left-1/2 -translate-x-1/2 top-full mt-0 w-[600px] bg-white border shadow-2xl z-[100] p-8 max-h-[500px]">
                     {/* Trend This Week Carousel */}
                     <div className="w-full">
                       <div className="flex items-center justify-between mb-6">
@@ -176,7 +176,7 @@ const Header = () => {
                   NEW ARRIVALS
                   <ChevronDown size={14} className="text-gray-500" />
                 </button>
-                {activeDropdown === "new-arrivals" && newArrivals.length > 0 && <div className="absolute left-1/2 -translate-x-1/2 top-full mt-0 w-[900px] bg-white border shadow-2xl p-8 z-[100]">
+                {activeDropdown === "new-arrivals" && newArrivals.length > 0 && <div className="absolute left-1/2 -translate-x-1/2 top-full mt-0 w-[900px] bg-white border shadow-2xl p-8 z-[100] max-h-[600px]">
                     <div className="flex items-center justify-between mb-6">
                       <h3 className="font-serif text-lg text-black">New Arrivals</h3>
                       <div className="flex items-center gap-3">
@@ -208,7 +208,7 @@ const Header = () => {
                   BEST SELLERS
                   <ChevronDown size={14} className="text-gray-500" />
                 </button>
-                {activeDropdown === "best-sellers" && bestSellers.length > 0 && <div className="absolute left-1/2 -translate-x-1/2 top-full mt-0 w-[900px] bg-white border shadow-2xl p-8 z-[100]">
+                {activeDropdown === "best-sellers" && bestSellers.length > 0 && <div className="absolute left-1/2 -translate-x-1/2 top-full mt-0 w-[900px] bg-white border shadow-2xl p-8 z-[100] max-h-[600px]">
                     <div className="flex items-center justify-between mb-6">
                       <h3 className="font-serif text-lg text-black">Best Sellers</h3>
                       <div className="flex items-center gap-3">
@@ -240,7 +240,7 @@ const Header = () => {
                   COLLECTIONS
                   <ChevronDown size={14} className="text-gray-500" />
                 </button>
-                {activeDropdown === "collections" && collections.length > 0 && <div className="absolute left-1/2 -translate-x-1/2 top-full mt-0 w-[900px] bg-white border shadow-2xl p-8 z-[100]">
+                {activeDropdown === "collections" && collections.length > 0 && <div className="absolute left-1/2 -translate-x-1/2 top-full mt-0 w-[900px] bg-white border shadow-2xl p-8 z-[100] max-h-[600px]">
                     <div className="flex items-center justify-between mb-6">
                       <h3 className="font-serif text-lg text-black">Collections</h3>
                       <div className="flex items-center gap-3">

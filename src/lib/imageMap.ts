@@ -73,12 +73,6 @@ import artisanEthnique from "@/assets/artisan-ethnique.jpg";
 import artisanEthnique2 from "@/assets/artisan-ethnique-2.jpg";
 import tharwahSilver from "@/assets/tharwah-silver.jpg";
 import tharwahSilver2 from "@/assets/tharwah-silver-2.jpg";
-import pinkDusk from "@/assets/pink-dusk.jpg";
-import candyNoir from "@/assets/candy-noir.jpg";
-import roseMirage from "@/assets/rose-mirage.jpg";
-import desertFalcon from "@/assets/desert-falcon.jpg";
-import sapphireOud from "@/assets/sapphire-oud.jpg";
-import spiceCaravan from "@/assets/spice-caravan.jpg";
 
 export const imageMap: Record<string, string> = {
   "vanilla-freak.jpg": vanillaFreak,
@@ -155,12 +149,6 @@ export const imageMap: Record<string, string> = {
   "artisan-ethnique-2.jpg": artisanEthnique2,
   "tharwah-silver.jpg": tharwahSilver,
   "tharwah-silver-2.jpg": tharwahSilver2,
-  "pink-dusk.jpg": pinkDusk,
-  "candy-noir.jpg": candyNoir,
-  "rose-mirage.jpg": roseMirage,
-  "desert-falcon.jpg": desertFalcon,
-  "sapphire-oud.jpg": sapphireOud,
-  "spice-caravan.jpg": spiceCaravan,
 };
 
 export const getImageUrl = (imageUrl: string): string => {

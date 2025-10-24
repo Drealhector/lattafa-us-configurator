@@ -2,10 +2,12 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { getImageUrl } from "@/lib/imageMap";
+import { Button } from "./ui/button";
 
 const Under30Section = () => {
   const navigate = useNavigate();
   const [products, setProducts] = useState<any[]>([]);
+  const [showAll, setShowAll] = useState(false);
 
   useEffect(() => {
     fetchProducts();
@@ -21,12 +23,14 @@ const Under30Section = () => {
     if (data) setProducts(data);
   };
 
+  const displayedProducts = showAll ? products : products.slice(0, 6);
+
   return (
     <section className="py-16 bg-gray-50">
       <div className="container mx-auto px-4">
         <h2 className="text-4xl font-bold text-center mb-12">Under $30</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
-          {products.map((product) => (
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-8 mb-8">
+          {displayedProducts.map((product) => (
             <div
               key={product.id}
               onClick={() => navigate(`/product/${product.id}`)}
@@ -47,6 +51,13 @@ const Under30Section = () => {
             </div>
           ))}
         </div>
+        {products.length > 6 && !showAll && (
+          <div className="text-center">
+            <Button onClick={() => setShowAll(true)} variant="outline" size="lg">
+              View More
+            </Button>
+          </div>
+        )}
       </div>
     </section>
   );

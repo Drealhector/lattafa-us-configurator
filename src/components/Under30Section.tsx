@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
+import { getImageUrl } from "@/lib/imageMap";
 
 const Under30Section = () => {
   const navigate = useNavigate();
@@ -33,7 +34,7 @@ const Under30Section = () => {
             >
               <div className="aspect-square overflow-hidden">
                 <img
-                  src={product.image_url}
+                  src={getImageUrl(product.image_url)}
                   alt={product.name}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                 />

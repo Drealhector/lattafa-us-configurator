@@ -1,7 +1,9 @@
 import { Star } from "lucide-react";
 import { Badge } from "./ui/badge";
+import { useNavigate } from "react-router-dom";
 
 interface ProductCardProps {
+  id?: string;
   name: string;
   image: string;
   price: string;
@@ -15,6 +17,7 @@ interface ProductCardProps {
 }
 
 const ProductCard = ({
+  id,
   name,
   image,
   price,
@@ -26,8 +29,19 @@ const ProductCard = ({
   tags = [],
   compact = false,
 }: ProductCardProps) => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    if (id) {
+      navigate(`/product/${id}`);
+    }
+  };
+
   return (
-    <div className={`group cursor-pointer ${compact ? 'text-xs' : ''}`}>
+    <div 
+      onClick={handleClick}
+      className={`group cursor-pointer ${compact ? 'text-xs' : ''}`}
+    >
       <div className={`relative aspect-square overflow-hidden bg-secondary rounded-sm ${compact ? 'mb-2' : 'mb-3'}`}>
         <img
           src={image}

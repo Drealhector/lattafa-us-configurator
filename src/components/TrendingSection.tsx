@@ -1,8 +1,11 @@
 import { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
+import { getImageUrl } from "@/lib/imageMap";
+import { useNavigate } from "react-router-dom";
 
 const TrendingSection = () => {
+  const navigate = useNavigate();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [products, setProducts] = useState<any[]>([]);
 
@@ -17,8 +20,9 @@ const TrendingSection = () => {
       
       if (data) {
         setProducts(data.map(p => ({
+          id: p.id,
           name: p.name,
-          image: p.image_url,
+          image: getImageUrl(p.image_url),
           price: p.price,
           vendor: p.vendor,
         })));
@@ -62,8 +66,12 @@ const TrendingSection = () => {
         </div>
 
         <div className="grid grid-cols-5 gap-6">
-          {products.slice(currentIndex, currentIndex + 5).map((product, idx) => (
-            <div key={idx} className="group cursor-pointer">
+          {products.slice(currentIndex, currentIndex + 5).map((product) => (
+            <div 
+              key={product.id} 
+              onClick={() => navigate(`/product/${product.id}`)}
+              className="group cursor-pointer"
+            >
               <div className="relative aspect-square overflow-hidden bg-muted rounded-lg mb-4">
                 <img
                   src={product.image}

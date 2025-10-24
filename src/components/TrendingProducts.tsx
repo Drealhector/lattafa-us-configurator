@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import ProductCard from "./ProductCard";
 import { supabase } from "@/integrations/supabase/client";
+import { getImageUrl } from "@/lib/imageMap";
 
 const TrendingProducts = () => {
   const [products, setProducts] = useState<any[]>([]);
@@ -16,8 +17,9 @@ const TrendingProducts = () => {
       
       if (data) {
         setProducts(data.map(p => ({
+          id: p.id,
           name: p.name,
-          image: p.image_url,
+          image: getImageUrl(p.image_url),
           price: p.price,
           vendor: p.vendor,
           rating: 5,
@@ -35,8 +37,8 @@ const TrendingProducts = () => {
       <div className="container mx-auto px-4">
         <h2 className="font-serif text-3xl font-bold text-center mb-12">Trend This Week</h2>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-6">
-          {products.map((product, index) => (
-            <ProductCard key={index} {...product} />
+          {products.map((product) => (
+            <ProductCard key={product.id} {...product} />
           ))}
         </div>
       </div>

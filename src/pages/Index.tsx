@@ -8,6 +8,8 @@ import CollectionsOverview from "@/components/CollectionsOverview";
 import Testimonials from "@/components/Testimonials";
 import FeaturesSection from "@/components/FeaturesSection";
 import Under30Section from "@/components/Under30Section";
+import BundlesSection from "@/components/BundlesSection";
+
 const Index = () => {
   return <div className="min-h-screen flex flex-col">
       <Header />
@@ -19,6 +21,7 @@ const Index = () => {
         <TrendingSection />
         <CollectionsOverview />
         <Under30Section />
+        <BundlesSection />
         <Testimonials />
         <FeaturesSection />
       </main>

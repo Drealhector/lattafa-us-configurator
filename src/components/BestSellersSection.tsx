@@ -3,6 +3,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "./ui/button";
 import ProductCard from "./ProductCard";
 import { supabase } from "@/integrations/supabase/client";
+import { getImageUrl } from "@/lib/imageMap";
 
 const BestSellersSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -18,8 +19,9 @@ const BestSellersSection = () => {
       
       if (data) {
         setProducts(data.map(p => ({
+          id: p.id,
           name: p.name,
-          image: p.image_url,
+          image: getImageUrl(p.image_url),
           price: p.price,
           vendor: p.vendor,
           rating: 5.0,
@@ -64,8 +66,8 @@ const BestSellersSection = () => {
           </div>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {products.slice(currentIndex, currentIndex + 4).map((product, index) => (
-            <ProductCard key={index} {...product} />
+          {products.slice(currentIndex, currentIndex + 4).map((product) => (
+            <ProductCard key={product.id} {...product} />
           ))}
         </div>
       </div>

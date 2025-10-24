@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { Menu, Search, ShoppingCart, User, X, ChevronDown, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "./ui/button";
 import lattafaLogo from "@/assets/lattafa-logo-extracted.png";
@@ -52,6 +53,7 @@ const imageMap: Record<string, string> = {
   "eclaire-banoffi-2.jpg": eclaireBanoffi2Img,
 };
 const Header = () => {
+  const navigate = useNavigate();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [trendingIndex, setTrendingIndex] = useState(0);
@@ -152,7 +154,7 @@ const Header = () => {
                         </div>
                       </div>
                       <div className="grid grid-cols-2 gap-6">
-                        {trendingProducts.slice(trendingIndex, trendingIndex + 2).map((product, idx) => <div key={idx} className="group cursor-pointer text-center">
+                        {trendingProducts.slice(trendingIndex, trendingIndex + 2).map((product, idx) => <div key={idx} onClick={() => navigate(`/product/${product.id}`)} className="group cursor-pointer text-center">
                             <div className="relative aspect-square overflow-hidden bg-gray-50 rounded mb-3">
                               <img src={product.image_url} alt={product.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
                             </div>
@@ -173,14 +175,14 @@ const Header = () => {
                 </button>
                 {activeDropdown === "new-arrivals" && newArrivals.length > 0 && <div className="absolute left-1/2 -translate-x-1/2 top-full mt-0 w-[1200px] bg-white border shadow-2xl p-8 z-[100]">
                     <div className="flex gap-6 overflow-x-auto">
-                      {newArrivals.map((product, idx) => <div key={idx} className="group cursor-pointer text-center flex-shrink-0 w-[200px]">
+                      {newArrivals.map((product, idx) => <div key={idx} onClick={() => navigate(`/product/${product.id}`)} className="group cursor-pointer text-center flex-shrink-0 w-[200px]">
                           <div className="relative aspect-square overflow-hidden bg-gray-100 rounded-2xl mb-3">
                             <img src={product.image_url} alt={product.name} className="w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-0" />
                             {product.image_url_2 && <img src={product.image_url_2} alt={product.name} className="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-300 group-hover:opacity-100" />}
                           </div>
                           <h4 className="text-sm font-serif mb-2 text-black">{product.name}</h4>
                           <p className="text-sm font-bold text-black mb-2">{product.price}</p>
-                          <button className="mx-auto w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200 transition-all">
+                          <button onClick={(e) => { e.stopPropagation(); navigate(`/product/${product.id}`); }} className="mx-auto w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200 transition-all">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                               <path d="M7 17L17 7M17 7H7M17 7V17" />
                             </svg>
@@ -198,14 +200,14 @@ const Header = () => {
                 </button>
                 {activeDropdown === "best-sellers" && bestSellers.length > 0 && <div className="absolute left-1/2 -translate-x-1/2 top-full mt-0 w-[1200px] bg-white border shadow-2xl p-8 z-[100]">
                     <div className="flex gap-6 overflow-x-auto">
-                      {bestSellers.map((product, idx) => <div key={idx} className="group cursor-pointer text-center flex-shrink-0 w-[200px]">
+                      {bestSellers.map((product, idx) => <div key={idx} onClick={() => navigate(`/product/${product.id}`)} className="group cursor-pointer text-center flex-shrink-0 w-[200px]">
                           <div className="relative aspect-square overflow-hidden bg-gray-100 rounded-2xl mb-3">
                             <img src={product.image_url} alt={product.name} className="w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-0" />
                             {product.image_url_2 && <img src={product.image_url_2} alt={product.name} className="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-300 group-hover:opacity-100" />}
                           </div>
                           <h4 className="text-sm font-serif mb-2 text-black">{product.name}</h4>
                           <p className="text-sm font-bold text-black mb-2">{product.price}</p>
-                          <button className="mx-auto w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200 transition-all">
+                          <button onClick={(e) => { e.stopPropagation(); navigate(`/product/${product.id}`); }} className="mx-auto w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200 transition-all">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                               <path d="M7 17L17 7M17 7H7M17 7V17" />
                             </svg>
@@ -223,14 +225,14 @@ const Header = () => {
                 </button>
                 {activeDropdown === "collections" && collections.length > 0 && <div className="absolute left-1/2 -translate-x-1/2 top-full mt-0 w-[1200px] bg-white border shadow-2xl p-8 z-[100]">
                     <div className="flex gap-6 overflow-x-auto">
-                      {collections.map((product, idx) => <div key={idx} className="group cursor-pointer text-center flex-shrink-0 w-[200px]">
+                      {collections.map((product, idx) => <div key={idx} onClick={() => navigate(`/product/${product.id}`)} className="group cursor-pointer text-center flex-shrink-0 w-[200px]">
                           <div className="relative aspect-square overflow-hidden bg-gray-100 rounded-2xl mb-3">
                             <img src={product.image_url} alt={product.name} className="w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-0" />
                             {product.image_url_2 && <img src={product.image_url_2} alt={product.name} className="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-300 group-hover:opacity-100" />}
                           </div>
                           <h4 className="text-sm font-serif mb-2 text-black">{product.name}</h4>
                           <p className="text-sm font-bold text-black mb-2">{product.price}</p>
-                          <button className="mx-auto w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200 transition-all">
+                          <button onClick={(e) => { e.stopPropagation(); navigate(`/product/${product.id}`); }} className="mx-auto w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200 transition-all">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                               <path d="M7 17L17 7M17 7H7M17 7V17" />
                             </svg>

@@ -26,23 +26,23 @@ const ProductSection = ({
   columns = 4 
 }: ProductSectionProps) => {
   const gridClass = {
-    3: "grid-cols-2 md:grid-cols-3",
-    4: "grid-cols-2 md:grid-cols-3 lg:grid-cols-4",
-    6: "grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6"
-  }[columns] || "grid-cols-2 md:grid-cols-3 lg:grid-cols-4";
+    3: "grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6",
+    4: "grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6",
+    6: "grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4 sm:gap-6"
+  }[columns] || "grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6";
 
   return (
-    <section className="py-16">
+    <section className="py-8 sm:py-12 md:py-16">
       <div className="container mx-auto px-4">
-        <div className="flex justify-between items-center mb-12">
-          <h2 className="font-serif text-3xl font-bold">{title}</h2>
+        <div className="flex justify-between items-center mb-8 sm:mb-12">
+          <h2 className="font-serif text-xl sm:text-2xl md:text-3xl font-bold">{title}</h2>
           {viewMoreLink && (
             <Button variant="outline" asChild>
               <a href={viewMoreLink}>View More</a>
             </Button>
           )}
         </div>
-        <div className={`grid ${gridClass} gap-6`}>
+        <div className={`grid ${gridClass}`}>
           {products.map((product, index) => (
             <ProductCard key={index} {...product} />
           ))}

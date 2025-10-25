@@ -35,10 +35,10 @@ const BundlesSection = () => {
   if (bundles.length === 0) return null;
 
   return (
-    <section className="py-16 bg-background">
+    <section className="py-8 sm:py-12 md:py-16 bg-background">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between mb-8">
-          <h2 className="font-serif text-3xl font-bold">Bundles</h2>
+          <h2 className="font-serif text-xl sm:text-2xl md:text-3xl font-bold">Bundles</h2>
           <div className="flex gap-2">
             <Button
               variant="outline"
@@ -58,7 +58,7 @@ const BundlesSection = () => {
             </Button>
           </div>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
           {bundles.slice(currentIndex, currentIndex + 4).map((bundle) => (
             <div
               key={bundle.id}

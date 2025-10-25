@@ -41,10 +41,10 @@ const TrendingSection = () => {
   };
 
   return (
-    <section className="py-16 bg-background">
+    <section className="py-8 sm:py-12 md:py-16 bg-background">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between mb-8">
-          <h2 className="text-3xl font-serif text-[#5B3A29]">Trend This Week</h2>
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-serif text-[#5B3A29]">Trend This Week</h2>
           <div className="flex gap-2">
             <button
               onClick={handlePrev}
@@ -65,7 +65,7 @@ const TrendingSection = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-5 gap-6">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-6">
           {products.slice(currentIndex, currentIndex + 5).map((product) => (
             <div 
               key={product.id} 

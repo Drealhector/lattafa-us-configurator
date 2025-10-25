@@ -54,11 +54,11 @@ const CategoryCarouselSection = ({
   if (products.length === 0) return null;
 
   return (
-    <section className="py-12 bg-background">
+    <section className="py-8 sm:py-10 md:py-12 bg-background">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between mb-8">
           <div>
-            <h2 className="font-serif text-3xl font-bold mb-2">{title}</h2>
+            <h2 className="font-serif text-xl sm:text-2xl md:text-3xl font-bold mb-2">{title}</h2>
             <p className="text-muted-foreground text-sm">
               What you want when you want it in an instant.
             </p>
@@ -85,7 +85,7 @@ const CategoryCarouselSection = ({
           </div>
         </div>
         <div className="relative">
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
             {products.slice(currentIndex, currentIndex + itemsPerView).map((product) => (
               <ProductCard key={product.id} {...product} />
             ))}

@@ -12,9 +12,9 @@ const CollectionsOverview = () => {
   ];
 
   return (
-    <section className="py-16 bg-secondary">
+    <section className="py-8 sm:py-12 md:py-16 bg-secondary">
       <div className="container mx-auto px-4">
-        <h2 className="font-serif text-3xl font-bold text-center mb-12">
+        <h2 className="font-serif text-xl sm:text-2xl md:text-3xl font-bold text-center mb-8 sm:mb-12">
           Explore Our Collection
         </h2>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">

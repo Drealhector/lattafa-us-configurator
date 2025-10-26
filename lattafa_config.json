@@ -1,0 +1,563 @@
+{
+  "home": {
+    "header": {
+      "announcement_bar": {
+        "text": "FREE Shipping On Orders Over USD $60",
+        "background_color": "#000000",
+        "text_color": "#FFFFFF",
+        "placement": "top",
+        "padding": "5px 10px",
+        "behavior": "fixed at top, dismissible",
+        "desktop_visible": true,
+        "mobile_visible": true
+      },
+      "main_header": {
+        "layout": "horizontal flex container with space-between alignment",
+        "background_color": "#FFFFFF",
+        "padding": "10px 20px",
+        "logo": {
+          "image_src": "https://www.lattafa-usa.com/cdn/shop/files/Logo_07f1bbc2-d14d-487f-b177-17d76faa8469.png?v=1749241065",
+          "alt": "Lattafa",
+          "dimensions": "approx. 100px width in header",
+          "position": "left",
+          "link": "/",
+          "responsive": "scales down on smaller screens"
+        },
+        "navigation_menu": {
+          "items": [
+            {
+              "title": "Shop",
+              "submenu": [
+                {"title": "Best Sellers", "url": "/collections/best-sellers"},
+                {"title": "New Arrivals", "url": "/collections/new-arrivals"},
+                {"title": "Bundles", "url": "/collections/bundles"}
+              ]
+            },
+            {
+              "title": "By Category",
+              "submenu": [
+                {"title": "All Fragrances", "url": "/collections/all"},
+                {"title": "Women’s Fragrances", "url": "/collections/women-s-fragrances"},
+                {"title": "Men’s Fragrances", "url": "/collections/men-s-fragrances"},
+                {"title": "Unisex Fragrances", "url": "/collections/unisex-fragrances"}
+              ]
+            },
+            {
+              "title": "By Type",
+              "submenu": [
+                {"title": "Eau de Parfum (EDP)", "url": "/collections/eau-de-parfum"},
+                {"title": "Deodorant", "url": "/collections/deodorant"},
+                {"title": "Air Freshener", "url": "/collections/air-freshener"},
+                {"title": "All Over Spray", "url": "/collections/all-over-spray"}
+              ]
+            },
+            {
+              "title": "By Brand",
+              "submenu": [
+                {"title": "Lattafa", "url": "/collections/lattafa-collection"},
+                {"title": "Lattafa Pride", "url": "/collections/lattafa-pride-collection"}
+              ]
+            }
+          ],
+          "additional_feature": {
+            "title": "Trend This Week",
+            "content": "mega-menu section featuring trending products with images and details",
+            "display": "appears on hover of a nav item (e.g. an icon or menu item) and shows a grid of trending products with image, name, price, etc"
+          },
+          "typography": {
+            "font": "sans-serif",
+            "font_size": "14px",
+            "text_color": "#000000",
+            "hover_color": "#a18148",
+            "dropdown_background": "#FFFFFF",
+            "dropdown_text_color": "#000000"
+          }
+        },
+        "header_icons": {
+          "search": {
+            "icon_type": "magnifying-glass SVG icon",
+            "action": "opens search overlay",
+            "desktop_position": "right side of header",
+            "mobile_position": "in bottom nav",
+            "size": "16px"
+          },
+          "account": {
+            "text": "Log in / Create Account",
+            "url": "/account/login",
+            "desktop_position": "right side",
+            "mobile_position": "in menu drawer",
+            "icon": null
+          },
+          "cart": {
+            "icon_type": "shopping bag icon with item count",
+            "text_indicator": "Cart 0",
+            "url": "/cart",
+            "desktop_position": "right side",
+            "mobile_position": "in bottom nav",
+            "interaction": "click opens cart drawer with cart contents"
+          },
+          "currency_selector": {
+            "type": "dropdown",
+            "options": ["USD $", "CAD $"],
+            "current": "United States (USD $)",
+            "behavior": "reloads prices in selected currency",
+            "position": "in footer on desktop (and in mobile menu)",
+            "flag_icon": false
+          }
+        },
+        "responsive_behavior": {
+          "desktop": "Full menu bar with dropdown/mega-menu on hover. Icons (search, account, cart) displayed inline.",
+          "tablet_mobile": "Compact header with hamburger icon for menu. Logo centered. Search, account, cart might move to a bottom fixed bar for quick access. Menu opens in a full-screen drawer when hamburger tapped."
+        }
+      }
+    },
+    "hero_slider": {
+      "type": "carousel",
+      "slides": [
+        {
+          "image": "Banner image (e.g. Petra perfume visual)",
+          "headline": "Petra – Shipping Now",
+          "subtext": "Laid-back luxury bottled — radiant tuberose, rum-soaked charm, and a gourmand kiss of the Mediterranean sun.",
+          "link": "/products/petra",
+          "background_position": "center center",
+          "text_alignment": "center",
+          "animation": "slide"
+        },
+        {
+          "image": "Banner image (Opulent Dubai visual)",
+          "headline": "Opulent Dubai – SHIPPING NOW",
+          "subtext": "Vibrant mango and grapefruit lead into a velvety floral core, ending in deep, opulent woods.",
+          "link": "/products/opulent-dubai",
+          "background_position": "center center",
+          "text_alignment": "center",
+          "animation": "slide"
+        },
+        {
+          "image": "Banner image (Niche Emarati collection visual)",
+          "headline": "NICHE EMARATI COLLECTION",
+          "subtext": "Essence of Emirati Elegance – Each scent blends tradition with sophistication.",
+          "link": "/collections/niche-emarati",
+          "background_position": "center center",
+          "text_alignment": "center",
+          "animation": "slide"
+        },
+        {
+          "image": "Banner image (Qaed Al Fursan Untamed visual)",
+          "headline": "Qaed Al Fursan Untamed – Shipping Now",
+          "subtext": "A journey from citrus heat to ambered wood — Untamed spices meet smoky woods.",
+          "link": "/products/qaed-al-fursan-untamed",
+          "background_position": "center center",
+          "text_alignment": "center",
+          "animation": "slide"
+        },
+        {
+          "image": "Banner image (Khamrah Dukhan visual)",
+          "headline": "Khamrah Dukhan – SHIPPING NOW",
+          "subtext": "Mystical incense, spiced tobacco, and golden amber — a lingering, whispered secret of a fragrance.",
+          "link": "/products/khamrah-dukhan",
+          "background_position": "center center",
+          "text_alignment": "center",
+          "animation": "slide"
+        },
+        {
+          "image": "Banner image (Victoria visual)",
+          "headline": "Victoria – SHIPPING NOW",
+          "subtext": "Bright, floral, and irresistibly creamy — a dessert-like delight with a touch of sophistication.",
+          "link": "/products/victoria",
+          "background_position": "center center",
+          "text_alignment": "center",
+          "animation": "slide"
+        },
+        {
+          "image": "Banner image (Asad Bourbon visual)",
+          "headline": "ASAD BOURBON – SHIPPING NOW",
+          "subtext": "Dive into the rich blend of cacao powder, Vanilla Bourbon, and Mirabelle plum.",
+          "link": "/products/asad-bourbon",
+          "background_position": "center center",
+          "text_alignment": "center",
+          "animation": "slide"
+        },
+        {
+          "image": "Banner image (Exclusive Gift Sets visual)",
+          "headline": "Exclusive Gift Sets",
+          "subtext": "Celebrate this holiday season with your loved ones and explore our exclusive gift sets.",
+          "link": "/collections/gift-sets",
+          "background_position": "center center",
+          "text_alignment": "center",
+          "animation": "slide"
+        }
+      ],
+      "autoplay": true,
+      "autoplay_interval": 5000,
+      "transition": "fade",
+      "controls": "dots or arrows for navigation",
+      "height": "full-width, 400px height approx on desktop, auto on mobile",
+      "responsive": "Images scale and center-crop on smaller screens; text size adjusts"
+    },
+    "promotional_highlights": {
+      "grid_promos": [
+        {
+          "image": "Atheeri launch banner",
+          "title": "Atheeri – SHIPPING NOW",
+          "description": "An enchanting fusion of delicate florals and gourmand warmth.",
+          "link": "/products/atheeri"
+        },
+        {
+          "image": "Yara Candy promo",
+          "title": "Yara Candy",
+          "description": "Think Pink! Think Sweet! Get ready to be sugared up because life sure is sweet!",
+          "link": "/products/yara-candy"
+        },
+        {
+          "image": "Mashrabya promo",
+          "title": "MASHRABYA LATTAFA",
+          "description": "A luxurious blend of cinnamon, dates, and patchouli for all to indulge.✨",
+          "link": "/products/mashrabya"
+        },
+        {
+          "image": "Zikra Niche Emarati promo",
+          "title": "ZIKRA – NICHE EMARATI",
+          "description": "Spice and sweetness—Zikra wraps you in luxurious praline and sandalwood.",
+          "link": "/products/zikra"
+        },
+        {
+          "image": "Yara Tous collection promo",
+          "title": "Yara Tous Perfumed Spray Collection",
+          "description": "Discover Yara Tous Perfumed spray along with our other perfumed spray collection.",
+          "link": "/collections/yara-tous"
+        },
+        {
+          "image": "Afeef Lattafa promo",
+          "title": "AFEEF LATTAFA",
+          "description": "Invigorating bergamot and peach meet a floral heart and warm, inviting base.",
+          "link": "/products/afeef"
+        },
+        {
+          "image": "Lattafa Pride new launch promo",
+          "title": "Lattafa Pride – NEW Launch",
+          "description": "Indulge in the essence of prestige with Lattafa Pride's latest masterpieces.",
+          "link": "/collections/lattafa-pride-collection"
+        },
+        {
+          "image": "Discounted Bundles promo",
+          "title": "Exclusive Discounted Bundles",
+          "description": "Scent-sational Savings: 25% Off Exclusive Fragrance Bundles!",
+          "link": "/collections/bundles"
+        },
+        {
+          "image": "Confession Collection promo",
+          "title": "Confession Collection – SHIPPING NOW",
+          "description": "Her beauty, his boldness — elegantly paired in a perfect fragrance duo ✨",
+          "link": "/collections/confession-collection"
+        },
+        {
+          "image": "Kids Perfume Collection promo",
+          "title": "Kids Perfume Collection – Lattafa Pride",
+          "description": "Bright, bubbly, and oh-so-fresh – just like your little one!",
+          "link": "/collections/kids-perfume-collection"
+        },
+        {
+          "image": "Artisan Ethnique promo",
+          "title": "Artisan Ethnique – Amber-Sweet Gourmand",
+          "description": "An irresistible amber-sweet gourmand fragrance, perfect to elevate your mood with playful sweetness.",
+          "link": "/products/artisan-ethnique"
+        },
+        {
+          "image": "Teriaq by Lattafa promo",
+          "title": "Experience Teriaq by Lattafa",
+          "description": "Quentin Bisch x Lattafa – A delicious blend of caramel, honey, apricots, and pink pepper, kissed by a rose with a touch of leather.",
+          "link": "/products/teriaq"
+        },
+        {
+          "image": "Kingdom collection promo",
+          "title": "Discover Kingdom",
+          "description": "Stunning Elixir for Him & Her. KINGDOM MAN: Unlock the Elixir Essence! KINGDOM WOMAN: Timeless Beauty!",
+          "link": "/collections/kingdom"
+        },
+        {
+          "image": "Sehr launch promo",
+          "title": "Introducing Sehr",
+          "description": "Embark on a Mystical Journey – Inspired by the fierce fire of the dragon, igniting the flames within us.",
+          "link": "/products/sehr"
+        },
+        {
+          "image": "Lattafa Original promo",
+          "title": "Discover Lattafa Perfumes",
+          "description": "Experience timeless sophistication with Lattafa Original Fragrances, where elegance meets excellence in every scent.",
+          "link": "/collections/lattafa-collection"
+        },
+        {
+          "image": "Bade'e Al Oud collection promo",
+          "title": "Lattafa Bade'e Al Oud Collection",
+          "description": "Discover Lattafa's Badee al Oud Collection: Rich oud, Captivating spices.",
+          "link": "/collections/badee-al-oud"
+        },
+        {
+          "image": "Yara Tous promo",
+          "title": "Discover Yara Tous",
+          "description": "Vibrant fruits, delicate florals, and a warm embrace of vanilla and musk in one captivating scent.",
+          "link": "/collections/yara-tous"
+        },
+        {
+          "image": "Yara collection promo",
+          "title": "Lattafa Yara Collection",
+          "description": "Sexy, Sweet and Elegant fragrances for Women.",
+          "link": "/collections/yara"
+        },
+        {
+          "image": "Yara Moi promo",
+          "title": "Discover Yara Moi",
+          "description": "OLFACTORY ELEGANCE REDEFINED – Yara Moi transcends traditional notions of masculine and feminine fragrances.",
+          "link": "/products/yara-moi"
+        }
+      ],
+      "layout": "multi-row grid of clickable promo cards",
+      "columns": 3,
+      "gutter": "20px",
+      "responsive": "On mobile, these highlight cards stack vertically or in a slider format"
+    },
+    "trending_fragrances": {
+      "title": "Trending Fragrances",
+      "layout": "horizontal scroll list or grid of featured items",
+      "items": [
+        {
+          "title": "EXCLUSIVE BUNDLES",
+          "description": "Discover Yara layering bundles at great discounts.",
+          "extra": "(5)",
+          "link": "/collections/bundles"
+        },
+        {
+          "title": "ECLAIRE!",
+          "description": "Get yours while the stock lasts!",
+          "link": "/collections/give-me-gourmand"
+        },
+        {
+          "title": "Lattafa Khamrah – The intoxicating addiction",
+          "description": "Experience a burst of sweetness, a touch of cinnamon spice, and a smooth finish with less booze! Perfect for any occasion!",
+          "link": "/products/khamrah"
+        },
+        {
+          "title": "Lattafa Oud Mood Collection",
+          "description": "Oud Mood, Elixir, Reminiscence & Musk Mood.",
+          "extra": "(5)",
+          "link": "/collections/oud-mood"
+        },
+        {
+          "title": "Lattafa Liam Blue Shine",
+          "description": "Finish off your day with the warm embrace of Amber, Patchouli and Musk. Don’t miss out on this enchanting scent!",
+          "link": "/products/liam-blue-shine"
+        },
+        {
+          "title": "Thameen Collection",
+          "description": "Wild Vanilla Musk, Sugar Plum Musk, Candy Pink Musk, and So Powder Musk",
+          "link": "/collections/thameen"
+        }
+      ],
+      "style": {
+        "background": "#F9F9F9",
+        "item_display": "inline-block cards",
+        "text_color": "#000000",
+        "font_size": "14px"
+      },
+      "interaction": "scrollable on small screens, may show part of next card as hint",
+      "desktop_columns": 3,
+      "responsive": "shrinks to one card per view on mobile swipe carousel"
+    },
+    "explore_collections": {
+      "title": "Explore",
+      "collections": [
+        {"name": "Lattafa Collection", "url": "/collections/lattafa-collection"},
+        {"name": "Lattafa Pride Collection", "url": "/collections/lattafa-pride-collection"},
+        {"name": "Asdaaf Collection", "url": "/collections/asdaaf-collection"},
+        {"name": "RAVE Collection", "url": "/collections/rave"},
+        {"name": "VURV Collection", "url": "/collections/vurv"},
+        {"name": "Air Fresheners Collection", "url": "/collections/air-fresheners"}
+      ],
+      "layout": "grid of 3 columns",
+      "text_style": "links or buttons for each collection name",
+      "spacing": "10px gap"
+    },
+    "about_section": {
+      "heading": "About Lattafa USA",
+      "text": "Lattafa Perfumes is a distinguished name in the world of fragrances, offering an exquisite range of scents that captivate the senses and elevate every moment. With a commitment to quality and innovation, we craft perfumes that embody sophistication, luxury, and individuality.",
+      "additional_text": "Drawing inspiration from the rich heritage of perfumery, our creations reflect a harmonious blend of tradition and modernity. Each fragrance is meticulously crafted using the finest ingredients sourced from around the globe, ensuring an unparalleled olfactory experience. Experience the allure of Lattafa Perfumes and indulge in the art of fragrance mastery.",
+      "contact_info": {
+        "phone": "888-714-6090",
+        "wholesale_email": "wholesale@lattafa-usa.com",
+        "contact_email": "hello@Lattafa-Usa.com"
+      },
+      "read_more_link": "/pages/about-us",
+      "images": [
+        {"src": "https://www.lattafa-usa.com/cdn/shop/files/about1.jpg", "alt": "Lattafa Perfumes imagery"},
+        {"src": "https://www.lattafa-usa.com/cdn/shop/files/about2.jpg", "alt": "Lattafa heritage imagery"}
+      ],
+      "layout": "two-column on desktop (text and images), stacked on mobile"
+    },
+    "value_props": {
+      "layout": "4-column icons row",
+      "items": [
+        {"icon_src": "https://www.lattafa-usa.com/cdn/shop/files/direct-from-lattafa.png", "title": "Direct from Lattafa", "subtitle": ""},
+        {"icon_src": "https://www.lattafa-usa.com/cdn/shop/files/return.png", "title": "Easy Returns", "subtitle": "Satisfaction Guarantee"},
+        {"icon_src": "https://www.lattafa-usa.com/cdn/shop/files/shipped.png", "title": "Free Shipping", "subtitle": "On orders over $100"},
+        {"icon_src": "https://www.lattafa-usa.com/cdn/shop/files/quality-assurance.png", "title": "Secure Checkout", "subtitle": "Apple Pay, PayPal & Stripe"}
+      ],
+      "style": {
+        "background": "#FFFFFF",
+        "text_color": "#000000",
+        "icon_size": "40px",
+        "title_font_weight": "bold",
+        "subtitle_font_weight": "normal"
+      },
+      "placement": "above footer on homepage",
+      "responsive": "stacks into 2x2 grid on mobile"
+    },
+    "footer": {
+      "quick_links": {
+        "Quick Shop": [
+          {"title": "All Fragrances", "url": "/collections/all"},
+          {"title": "New Arrivals", "url": "/collections/new-arrivals"},
+          {"title": "Bestsellers", "url": "/collections/best-sellers"},
+          {"title": "Gift Card", "url": "/products/gift-card"},
+          {"title": "Bundles", "url": "/collections/bundles"}
+        ],
+        "Customer Support": [
+          {"title": "FAQs", "url": "/pages/faqs"},
+          {"title": "Referral and Rewards", "url": "/pages/rewards"},
+          {"title": "Shipping & Returns", "url": "/pages/shipping-returns"},
+          {"title": "Track My Order", "url": "/pages/track-order"},
+          {"title": "Contact Us", "url": "/pages/contact"}
+        ],
+        "Know More": [
+          {"title": "About Us", "url": "/pages/about-us"},
+          {"title": "Blogs", "url": "/blogs"},
+          {"title": "Reviews", "url": "/pages/reviews"},
+          {"title": "My Account", "url": "/account"},
+          {"title": "Your privacy choices", "url": "/pages/privacy-choices"},
+          {"title": "Wholesale/Reseller", "url": "/pages/wholesale"}
+        ]
+      },
+      "newsletter_signup": {
+        "text": "Subscribe to get 10% OFF",
+        "subtext": "Subscribe for discounts & updates.",
+        "input_placeholder": "Email",
+        "button_text": "Subscribe",
+        "confirmation_message": "You have already subscribed!",
+        "terms_text": "By subscribing you agree to the Terms of Use & Privacy Policy.",
+        "terms_links": {
+          "terms": "/policies/terms-of-service",
+          "privacy": "/policies/privacy-policy"
+        }
+      },
+      "social_links": [
+        {"platform": "Facebook", "url": "https://www.facebook.com/lattafa_perfumes"},
+        {"platform": "Instagram", "url": "https://www.instagram.com/lattafa.usa"},
+        {"platform": "TikTok", "url": "https://www.tiktok.com/@lattafa.usa"}
+      ],
+      "copyright": "© 2025 Lattafa-Usa.com. All rights reserved. Designed and Developed by Lattafa",
+      "payment_methods": ["Amazon", "American Express", "Apple Pay", "Diners Club", "Discover", "Google Pay", "Mastercard", "PayPal", "Shop Pay", "Visa"],
+      "layout": "4-column grid on desktop, collapsing to accordion or stacked on mobile",
+      "background_color": "#111111",
+      "text_color": "#FFFFFF",
+      "link_color": "#FFFFFF",
+      "responsive": "Columns stack vertically on small screens; social icons and currency selector center-align on mobile."
+    },
+    "floating_elements": {
+      "mobile_nav_bar": {
+        "visible_on": "mobile",
+        "buttons": [
+          {"icon": "home", "label": "Home", "url": "/"},
+          {"icon": "search", "label": "Search", "action": "open_search"},
+          {"icon": "cart", "label": "Cart", "action": "open_cart"},
+          {"icon": "grid", "label": "Products", "url": "/collections/all"},
+          {"icon": "user", "label": "About", "url": "/pages/about-us"}
+        ],
+        "style": {
+          "position": "fixed bottom",
+          "background": "#FFFFFF",
+          "icon_color": "#555555",
+          "text_size": "12px"
+        },
+        "behavior": "Icons open respective pages or overlays; highlights active section",
+        "example": "Home, Search, Cart, Products, About icons are shown in a bottom bar on mobile"
+      },
+      "search_overlay": {
+        "trigger": "search icon click",
+        "layout": "full-screen overlay with search input and suggestions",
+        "background": "#FFFFFF",
+        "input_style": {
+          "border": "1px solid #000000",
+          "padding": "10px",
+          "font_size": "16px"
+        },
+        "clear_button": {
+          "text": "Clear",
+          "function": "clears input or closes search",
+          "position": "inside input on right"
+        },
+        "suggestions": {
+          "trending_keywords": ["Khamrah", "Asad", "Badee Al Oud", "Yara"],
+          "trending_products": [
+            {
+              "title": "Atheeri",
+              "price": "$44.99 USD",
+              "sale_price": "$44.99 USD",
+              "original_price": "$47.99 USD",
+              "link": "/products/atheeri"
+            },
+            {
+              "title": "Asad Zanzibar",
+              "price": "$44.99 USD",
+              "sale_price": "$44.99 USD",
+              "original_price": "$47.99 USD",
+              "link": "/products/asad-zanzibar"
+            },
+            {
+              "title": "Bayaan",
+              "price": "$39.99 USD",
+              "sale_price": "$39.99 USD",
+              "original_price": "$35.99 USD",
+              "link": "/products/bayaan"
+            }
+          ]
+        },
+        "animation": "fade-in",
+        "close_on_click_outside": true,
+        "responsive": "fills screen on mobile, centers on desktop",
+        "note": "The overlay shows most-searched keywords and products for quick access"
+      },
+      "cart_drawer": {
+        "trigger": "cart icon click or 'Add to cart' action",
+        "layout": "side-drawer panel from right",
+        "background": "#FFFFFF",
+        "content": {
+          "title": "Your Cart",
+          "items_list": "list of products added with thumbnail, name, quantity, price",
+          "subtotal": "calculated subtotal",
+          "free_shipping_notice": "You are eligible for free shipping. Spend $X more to reach free shipping!",
+          "empty_state": "Looks like your cart is empty.",
+          "suggestions": [
+            {"collection": "Lattafa Pride", "url": "/collections/lattafa-pride"},
+            {"collection": "Best Sellers", "url": "/collections/best-sellers"},
+            {"collection": "New Arrivals", "url": "/collections/new-arrivals"},
+            {"collection": "Asad", "url": "/collections/asad"}
+          ],
+          "order_note": {
+            "label": "Order note",
+            "input": "text area for special instructions"
+          },
+          "checkout_button": "Proceed to Checkout",
+          "view_cart_button": "View cart"
+        },
+        "style": {
+          "width": "min(400px, 80%)",
+          "box_shadow": "rgba(0,0,0,0.5) -2px 0 5px",
+          "z_index": 1000
+        },
+        "animation": "slide-in from right",
+        "close_button": "X icon at top or click overlay backdrop",
+        "responsive": "full-screen modal on very small screens",
+        "example_content": "Empty cart shows a message and suggested collections"
+      }
+    }
+  }
+}

@@ -34,7 +34,7 @@ serve(async (req) => {
           product_data: {
             name: item.name,
             description: item.vendor,
-            images: [item.image],
+            // Remove images as they're local imports, not valid URLs
           },
           unit_amount: priceInCents,
         },

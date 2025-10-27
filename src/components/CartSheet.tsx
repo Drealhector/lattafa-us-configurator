@@ -56,7 +56,7 @@ export const CartSheet = ({ open, onOpenChange }: CartSheetProps) => {
           </SheetTitle>
         </SheetHeader>
 
-        <div className="flex flex-col h-[calc(100vh-120px)] mt-6">
+        <div className="flex flex-col h-[calc(100vh-180px)] mt-4">
           {items.length === 0 ? (
             <div className="flex-1 flex flex-col items-center justify-center text-center">
               <ShoppingBag className="h-16 w-16 text-gray-300 mb-4" />
@@ -110,8 +110,8 @@ export const CartSheet = ({ open, onOpenChange }: CartSheetProps) => {
                 </div>
               </div>
 
-              <div className="border-t pt-4 mt-4 space-y-4">
-                <div className="flex justify-between items-center text-lg font-bold">
+              <div className="border-t pt-3 space-y-3 bg-white sticky bottom-0">
+                <div className="flex justify-between items-center text-xl font-bold">
                   <span>Total:</span>
                   <span>${total.toFixed(2)}</span>
                 </div>

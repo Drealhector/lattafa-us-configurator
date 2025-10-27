@@ -56,6 +56,7 @@ const Header = () => {
   const navigate = useNavigate();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [mobileSubmenu, setMobileSubmenu] = useState<string | null>(null);
   const [trendingIndex, setTrendingIndex] = useState(0);
   const [arrivalsIndex, setArrivalsIndex] = useState(0);
   const [sellersIndex, setSellersIndex] = useState(0);
@@ -295,74 +296,203 @@ const Header = () => {
         </div>
       </div>
 
-      {/* Mobile Menu */}
-      {isMobileMenuOpen && <div className="lg:hidden border-t bg-white shadow-lg">
-          <nav className="container mx-auto px-4 py-6 space-y-6">
-            {/* Shop Section */}
-            <div className="space-y-3">
-              <h3 className="text-sm font-semibold tracking-wide text-black">SHOP</h3>
-              <div className="grid grid-cols-2 gap-4">
-                {trendingProducts.slice(0, 4).map((product, idx) => (
-                  <div key={idx} onClick={() => { navigate(`/product/${product.id}`); setIsMobileMenuOpen(false); }} className="cursor-pointer">
-                    <div className="aspect-square overflow-hidden bg-gray-50 rounded mb-2">
-                      <img src={product.image_url} alt={product.name} className="w-full h-full object-cover" />
-                    </div>
-                    <h4 className="text-xs font-medium text-black line-clamp-2">{product.name}</h4>
-                    <p className="text-xs font-bold text-black">{product.price}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-            
-            {/* New Arrivals Section */}
-            <div className="space-y-3 border-t pt-6">
-              <h3 className="text-sm font-semibold tracking-wide text-black">NEW ARRIVALS</h3>
-              <div className="grid grid-cols-2 gap-4">
-                {newArrivals.slice(0, 4).map((product, idx) => (
-                  <div key={idx} onClick={() => { navigate(`/product/${product.id}`); setIsMobileMenuOpen(false); }} className="cursor-pointer">
-                    <div className="aspect-square overflow-hidden bg-gray-50 rounded mb-2">
-                      <img src={product.image_url} alt={product.name} className="w-full h-full object-cover" />
-                    </div>
-                    <h4 className="text-xs font-medium text-black line-clamp-2">{product.name}</h4>
-                    <p className="text-xs font-bold text-black">{product.price}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
+      {/* Mobile Menu Overlay */}
+      {isMobileMenuOpen && (
+        <div className="lg:hidden fixed inset-0 bg-white z-50 overflow-y-auto">
+          {/* Header */}
+          <div className="flex items-center justify-between p-4 border-b">
+            <img src={lattafaLogo} alt="Lattafa Perfumes" className="h-10 w-auto" />
+            <button 
+              onClick={() => { setIsMobileMenuOpen(false); setMobileSubmenu(null); }} 
+              className="p-2"
+              aria-label="Close menu"
+            >
+              <X size={24} />
+            </button>
+          </div>
 
-            {/* Best Sellers Section */}
-            <div className="space-y-3 border-t pt-6">
-              <h3 className="text-sm font-semibold tracking-wide text-black">BEST SELLERS</h3>
-              <div className="grid grid-cols-2 gap-4">
-                {bestSellers.slice(0, 4).map((product, idx) => (
-                  <div key={idx} onClick={() => { navigate(`/product/${product.id}`); setIsMobileMenuOpen(false); }} className="cursor-pointer">
-                    <div className="aspect-square overflow-hidden bg-gray-50 rounded mb-2">
-                      <img src={product.image_url} alt={product.name} className="w-full h-full object-cover" />
-                    </div>
-                    <h4 className="text-xs font-medium text-black line-clamp-2">{product.name}</h4>
-                    <p className="text-xs font-bold text-black">{product.price}</p>
-                  </div>
-                ))}
+          {/* Main Menu */}
+          {!mobileSubmenu && (
+            <nav className="p-6">
+              <div className="space-y-6">
+                <button
+                  onClick={() => setMobileSubmenu('shop')}
+                  className="w-full flex items-center justify-between py-4 border-b border-gray-200"
+                >
+                  <span className="text-2xl font-serif text-black">Shop</span>
+                  <ChevronRight size={24} className="text-gray-400" />
+                </button>
+                
+                <button
+                  onClick={() => setMobileSubmenu('new-arrivals')}
+                  className="w-full flex items-center justify-between py-4 border-b border-gray-200"
+                >
+                  <span className="text-2xl font-serif text-black">New Arrivals</span>
+                  <ChevronRight size={24} className="text-gray-400" />
+                </button>
+                
+                <button
+                  onClick={() => setMobileSubmenu('best-sellers')}
+                  className="w-full flex items-center justify-between py-4 border-b border-gray-200"
+                >
+                  <span className="text-2xl font-serif text-black">Best Sellers</span>
+                  <ChevronRight size={24} className="text-gray-400" />
+                </button>
+                
+                <button
+                  onClick={() => setMobileSubmenu('collections')}
+                  className="w-full flex items-center justify-between py-4 border-b border-gray-200"
+                >
+                  <span className="text-2xl font-serif text-black">Collections</span>
+                  <ChevronRight size={24} className="text-gray-400" />
+                </button>
+                
+                <div className="py-4 border-b border-gray-200">
+                  <span className="text-2xl font-serif text-black">Bundles</span>
+                </div>
+                
+                <div className="py-4 border-b border-gray-200">
+                  <span className="text-2xl font-serif text-black">Track My Order</span>
+                </div>
               </div>
-            </div>
 
-            {/* Collections Section */}
-            <div className="space-y-3 border-t pt-6">
-              <h3 className="text-sm font-semibold tracking-wide text-black">COLLECTIONS</h3>
-              <div className="grid grid-cols-2 gap-4">
-                {collections.slice(0, 4).map((product, idx) => (
-                  <div key={idx} onClick={() => { navigate(`/product/${product.id}`); setIsMobileMenuOpen(false); }} className="cursor-pointer">
-                    <div className="aspect-square overflow-hidden bg-gray-50 rounded mb-2">
+              {/* Bottom Section */}
+              <div className="fixed bottom-0 left-0 right-0 p-6 bg-white border-t">
+                <button className="w-full bg-black text-white py-4 rounded-full text-lg font-semibold mb-4">
+                  LOG IN
+                </button>
+                <div className="flex items-center justify-center gap-2 text-sm">
+                  <span className="text-2xl">🇺🇸</span>
+                  <span>United States (USD $)</span>
+                  <ChevronDown size={16} />
+                </div>
+              </div>
+            </nav>
+          )}
+
+          {/* Submenu - Shop */}
+          {mobileSubmenu === 'shop' && (
+            <div className="p-6">
+              <button 
+                onClick={() => setMobileSubmenu(null)}
+                className="flex items-center gap-2 mb-6"
+              >
+                <ChevronLeft size={24} />
+                <span className="text-lg font-bold uppercase tracking-wider">SHOP</span>
+              </button>
+              <div className="grid grid-cols-2 gap-4 pb-32">
+                {trendingProducts.map((product, idx) => (
+                  <div 
+                    key={idx} 
+                    onClick={() => { navigate(`/product/${product.id}`); setIsMobileMenuOpen(false); setMobileSubmenu(null); }} 
+                    className="cursor-pointer"
+                  >
+                    <div className="aspect-square overflow-hidden bg-gray-50 rounded-lg mb-3">
                       <img src={product.image_url} alt={product.name} className="w-full h-full object-cover" />
                     </div>
-                    <h4 className="text-xs font-medium text-black line-clamp-2">{product.name}</h4>
-                    <p className="text-xs font-bold text-black">{product.price}</p>
+                    <h4 className="text-sm font-serif mb-1 text-black">{product.name}</h4>
                   </div>
                 ))}
               </div>
             </div>
-          </nav>
-        </div>}
+          )}
+
+          {/* Submenu - New Arrivals */}
+          {mobileSubmenu === 'new-arrivals' && (
+            <div className="p-6">
+              <button 
+                onClick={() => setMobileSubmenu(null)}
+                className="flex items-center gap-2 mb-6"
+              >
+                <ChevronLeft size={24} />
+                <span className="text-lg font-bold uppercase tracking-wider">NEW ARRIVALS</span>
+              </button>
+              <div className="grid grid-cols-2 gap-4 pb-32">
+                {newArrivals.map((product, idx) => (
+                  <div 
+                    key={idx} 
+                    onClick={() => { navigate(`/product/${product.id}`); setIsMobileMenuOpen(false); setMobileSubmenu(null); }} 
+                    className="cursor-pointer"
+                  >
+                    <div className="aspect-square overflow-hidden bg-gray-50 rounded-lg mb-3">
+                      <img src={product.image_url} alt={product.name} className="w-full h-full object-cover" />
+                    </div>
+                    <h4 className="text-sm font-serif mb-1 text-black">{product.name}</h4>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Submenu - Best Sellers */}
+          {mobileSubmenu === 'best-sellers' && (
+            <div className="p-6">
+              <button 
+                onClick={() => setMobileSubmenu(null)}
+                className="flex items-center gap-2 mb-6"
+              >
+                <ChevronLeft size={24} />
+                <span className="text-lg font-bold uppercase tracking-wider">BEST SELLERS</span>
+              </button>
+              <div className="grid grid-cols-2 gap-4 pb-32">
+                {bestSellers.map((product, idx) => (
+                  <div 
+                    key={idx} 
+                    onClick={() => { navigate(`/product/${product.id}`); setIsMobileMenuOpen(false); setMobileSubmenu(null); }} 
+                    className="cursor-pointer"
+                  >
+                    <div className="aspect-square overflow-hidden bg-gray-50 rounded-lg mb-3">
+                      <img src={product.image_url} alt={product.name} className="w-full h-full object-cover" />
+                    </div>
+                    <h4 className="text-sm font-serif mb-1 text-black">{product.name}</h4>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Submenu - Collections */}
+          {mobileSubmenu === 'collections' && (
+            <div className="p-6">
+              <button 
+                onClick={() => setMobileSubmenu(null)}
+                className="flex items-center gap-2 mb-6"
+              >
+                <ChevronLeft size={24} />
+                <span className="text-lg font-bold uppercase tracking-wider">COLLECTIONS</span>
+              </button>
+              <div className="grid grid-cols-2 gap-4 pb-32">
+                {collections.map((product, idx) => (
+                  <div 
+                    key={idx} 
+                    onClick={() => { navigate(`/product/${product.id}`); setIsMobileMenuOpen(false); setMobileSubmenu(null); }} 
+                    className="cursor-pointer"
+                  >
+                    <div className="aspect-square overflow-hidden bg-gray-50 rounded-lg mb-3">
+                      <img src={product.image_url} alt={product.name} className="w-full h-full object-cover" />
+                    </div>
+                    <h4 className="text-sm font-serif mb-1 text-black">{product.name}</h4>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Bottom Section for Submenus */}
+          {mobileSubmenu && (
+            <div className="fixed bottom-0 left-0 right-0 p-6 bg-white border-t">
+              <button className="w-full bg-black text-white py-4 rounded-full text-lg font-semibold mb-4">
+                LOG IN
+              </button>
+              <div className="flex items-center justify-center gap-2 text-sm">
+                <span className="text-2xl">🇺🇸</span>
+                <span>United States (USD $)</span>
+                <ChevronDown size={16} />
+              </div>
+            </div>
+          )}
+        </div>
+      )}
     </header>;
 };
 export default Header;

@@ -108,9 +108,9 @@ const Header = () => {
   };
   return <header className="sticky top-0 z-50 bg-background shadow-sm">
       {/* Animated Top Bar - Brown with scrolling text */}
-      <div className="bg-[#5B3A29] text-white py-2.5 overflow-hidden relative">
+      <div className="bg-[#5B3A29] text-white py-2 overflow-hidden relative">
         <div className="flex animate-[scroll-left_25s_linear_infinite]">
-          {[...Array(10)].map((_, i) => <span key={i} className="inline-block px-12 text-sm font-medium whitespace-nowrap">
+          {[...Array(10)].map((_, i) => <span key={i} className="inline-block px-12 text-xs font-medium whitespace-nowrap">
               FREE Shipping On Orders Over USD $60
             </span>)}
         </div>
@@ -119,11 +119,11 @@ const Header = () => {
       {/* Main Header */}
       <div className="border-b bg-white">
         <div className="container mx-auto px-4">
-          <div className="flex items-center h-20 gap-8">
+          <div className="flex items-center h-16 gap-8">
             {/* Logo - Left Side */}
             <div className="flex-shrink-0">
               <a href="/" className="block">
-                <img src={lattafaLogo} alt="Lattafa Perfumes" className="h-20 w-auto" />
+                <img src={lattafaLogo} alt="Lattafa Perfumes" className="h-12 w-auto" />
               </a>
             </div>
 

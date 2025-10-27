@@ -3,7 +3,7 @@ import heroProductsDuo from "@/assets/hero-duo-products.png";
 
 const HeroBanner = () => {
   return (
-    <section className="relative h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] w-full overflow-hidden bg-black">
+    <section className="relative h-[500px] sm:h-[600px] md:h-[700px] lg:h-[85vh] w-full overflow-hidden bg-black">
       <div
         className="absolute inset-0 w-full h-full bg-cover bg-center"
         style={{ 

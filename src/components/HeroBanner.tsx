@@ -3,7 +3,7 @@ import heroProductsDuo from "@/assets/hero-duo-products.png";
 
 const HeroBanner = () => {
   return (
-    <section className="relative h-[500px] sm:h-[600px] md:h-[700px] lg:h-[85vh] w-full overflow-hidden bg-black">
+    <section className="relative h-[55vh] sm:h-[60vh] md:h-[700px] lg:h-[85vh] w-full overflow-hidden bg-black">
       <div
         className="absolute inset-0 w-full h-full bg-cover bg-center"
         style={{ 
@@ -12,21 +12,21 @@ const HeroBanner = () => {
           backgroundPosition: 'center'
         }}
       >
-        <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/30" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/40" />
       </div>
       
-      <div className="relative h-full container mx-auto px-4 flex items-center justify-center text-center">
+      <div className="relative h-full container mx-auto px-4 flex items-end md:items-center justify-center text-center pb-20 md:pb-0">
         <div className="max-w-3xl space-y-3 sm:space-y-4 md:space-y-6">
-          <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-white tracking-wider drop-shadow-[0_4px_8px_rgba(0,0,0,0.8)]">
+          <h1 className="hidden md:block font-serif text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-white tracking-wider drop-shadow-[0_4px_8px_rgba(0,0,0,0.8)]">
             TOGETHER WE'RE TROUBLE
           </h1>
-          <p className="text-sm sm:text-base md:text-lg lg:text-xl text-white/90 max-w-2xl mx-auto drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+          <p className="hidden md:block text-sm sm:text-base md:text-lg lg:text-xl text-white/90 max-w-2xl mx-auto drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
             Two fragrances designed to pull you closer and keep you there.<br className="hidden sm:block" />
             Strong alone. Dangerous together.
           </p>
           <div className="flex gap-4 justify-center pt-2 sm:pt-4">
-            <Button size="lg" className="bg-gradient-to-r from-[#D4AF37] to-[#FFD700] hover:from-[#C19B2A] hover:to-[#D4AF37] text-black font-semibold px-6 sm:px-8 text-sm sm:text-base shadow-2xl relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/30 before:to-transparent before:translate-x-[-200%] hover:before:translate-x-[200%] before:transition-transform before:duration-700 animate-shimmer">
-              SHOP NOW
+            <Button size="lg" className="bg-[#D4AF37] hover:bg-[#C19B2A] text-black font-bold px-12 py-6 text-base rounded-full shadow-2xl uppercase">
+              ORDER NOW
             </Button>
           </div>
         </div>

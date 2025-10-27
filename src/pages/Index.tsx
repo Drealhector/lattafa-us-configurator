@@ -12,7 +12,8 @@ import BundlesSection from "@/components/BundlesSection";
 import CategoryCarouselSection from "@/components/CategoryCarouselSection";
 
 const Index = () => {
-  return <div className="min-h-screen flex flex-col">
+  return (
+    <div className="min-h-screen flex flex-col">
       <Header />
       
       <main className="flex-1">
@@ -33,6 +34,8 @@ const Index = () => {
       </main>
 
       <Footer />
-    </div>;
+    </div>
+  );
 };
+
 export default Index;

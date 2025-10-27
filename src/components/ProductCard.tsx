@@ -1,6 +1,10 @@
 import { Star } from "lucide-react";
 import { Badge } from "./ui/badge";
 import { useNavigate } from "react-router-dom";
+import { ShoppingCart } from "lucide-react";
+import { Button } from "./ui/button";
+import { useCart } from "@/contexts/CartContext";
+import { useToast } from "@/hooks/use-toast";
 
 interface ProductCardProps {
   id?: string;
@@ -30,11 +34,28 @@ const ProductCard = ({
   compact = false,
 }: ProductCardProps) => {
   const navigate = useNavigate();
+  const { addItem } = useCart();
+  const { toast } = useToast();
 
   const handleClick = () => {
     if (id) {
       navigate(`/product/${id}`);
     }
+  };
+
+  const handleAddToCart = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    addItem({
+      id: id || name,
+      name,
+      price,
+      image,
+      vendor,
+    });
+    toast({
+      title: "Added to cart",
+      description: `${name} has been added to your cart`,
+    });
   };
 
   return (
@@ -56,6 +77,14 @@ const ProductCard = ({
         {tags.includes("New") && (
           <Badge className="absolute top-2 left-2 bg-accent text-accent-foreground">New</Badge>
         )}
+        <Button
+          onClick={handleAddToCart}
+          size="icon"
+          className="absolute bottom-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity bg-white hover:bg-gray-100 text-black shadow-lg"
+          aria-label="Add to cart"
+        >
+          <ShoppingCart className="h-4 w-4" />
+        </Button>
       </div>
       
       <div className={compact ? 'space-y-0.5' : 'space-y-1'}>

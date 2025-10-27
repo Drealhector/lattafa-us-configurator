@@ -4,6 +4,8 @@ import { Menu, Search, ShoppingCart, User, X, ChevronDown, ChevronLeft, ChevronR
 import { Button } from "./ui/button";
 import lattafaLogo from "@/assets/lattafa-logo-extracted.png";
 import { supabase } from "@/integrations/supabase/client";
+import { useCart } from "@/contexts/CartContext";
+import { CartSheet } from "./CartSheet";
 
 // Import product images
 import chocoOverdoseImg from "@/assets/choco-overdose.jpg";
@@ -54,6 +56,8 @@ const imageMap: Record<string, string> = {
 };
 const Header = () => {
   const navigate = useNavigate();
+  const { itemCount } = useCart();
+  const [isCartOpen, setIsCartOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [mobileSubmenu, setMobileSubmenu] = useState<string | null>(null);
@@ -107,7 +111,9 @@ const Header = () => {
     setBestSellers((sellers || []).map(mapProduct));
     setCollections((collectionData || []).map(mapProduct));
   };
-  return <header className="sticky top-0 z-50 bg-background shadow-sm">
+  
+  return (
+    <header className="sticky top-0 z-50 bg-background shadow-sm">
       {/* Animated Top Bar - Brown with scrolling text */}
       <div className="bg-[#5B3A29] text-white py-2 overflow-hidden relative">
         <div className="flex animate-[scroll-left_25s_linear_infinite]">
@@ -276,11 +282,19 @@ const Header = () => {
               <Button variant="ghost" size="icon" aria-label="Account" className="hidden lg:flex">
                 <User size={20} />
               </Button>
-              <Button variant="ghost" size="icon" aria-label="Cart" className="relative">
+              <Button 
+                variant="ghost" 
+                size="icon" 
+                aria-label="Cart" 
+                className="relative"
+                onClick={() => setIsCartOpen(true)}
+              >
                 <ShoppingCart size={20} />
-                <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-medium">
-                  1
-                </span>
+                {itemCount > 0 && (
+                  <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-medium">
+                    {itemCount}
+                  </span>
+                )}
               </Button>
               <Button 
                 variant="ghost" 
@@ -493,6 +507,10 @@ const Header = () => {
           )}
         </div>
       )}
-    </header>;
+
+      <CartSheet open={isCartOpen} onOpenChange={setIsCartOpen} />
+    </header>
+  );
 };
+
 export default Header;

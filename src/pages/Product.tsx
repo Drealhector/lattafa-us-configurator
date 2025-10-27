@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { ShoppingCart, Heart } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { useCart } from "@/contexts/CartContext";
 
 // Import all product images
 import chocoOverdoseImg from "@/assets/choco-overdose.jpg";
@@ -78,6 +79,7 @@ const Product = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const { toast } = useToast();
+  const { addItem } = useCart();
   const [product, setProduct] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [selectedImage, setSelectedImage] = useState(0);
@@ -128,6 +130,14 @@ const Product = () => {
   };
 
   const handleAddToCart = () => {
+    addItem({
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      image: product.image_url,
+      vendor: product.vendor,
+    }, quantity);
+    
     toast({
       title: "Added to cart",
       description: `${quantity} x ${product.name} added to your cart`,

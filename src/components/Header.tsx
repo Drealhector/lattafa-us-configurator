@@ -128,7 +128,7 @@ const Header = () => {
             </div>
 
             {/* Desktop Navigation - Center */}
-            <nav className="flex items-center space-x-8 flex-1 justify-center">
+            <nav className="hidden lg:flex items-center space-x-8 flex-1 justify-center">
               {/* SHOP Dropdown */}
               <div className="relative" onMouseEnter={() => setActiveDropdown("shop")} onMouseLeave={() => setActiveDropdown(null)}>
                 <button className="text-sm font-semibold tracking-wide hover:text-[#D4AF37] transition-colors flex items-center gap-1 text-black">
@@ -269,17 +269,26 @@ const Header = () => {
 
             {/* Icons - Right Side */}
             <div className="flex items-center gap-1 ml-auto">
-              <Button variant="ghost" size="icon" aria-label="Search">
+              <Button variant="ghost" size="icon" aria-label="Search" className="lg:flex">
                 <Search size={20} />
               </Button>
-              <Button variant="ghost" size="icon" aria-label="Account">
+              <Button variant="ghost" size="icon" aria-label="Account" className="hidden lg:flex">
                 <User size={20} />
               </Button>
               <Button variant="ghost" size="icon" aria-label="Cart" className="relative">
                 <ShoppingCart size={20} />
-                <span className="absolute -top-1 -right-1 bg-black text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-medium">
-                  0
+                <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-medium">
+                  1
                 </span>
+              </Button>
+              <Button 
+                variant="ghost" 
+                size="icon" 
+                aria-label="Menu" 
+                className="lg:hidden"
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              >
+                {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
               </Button>
             </div>
           </div>
@@ -287,12 +296,71 @@ const Header = () => {
       </div>
 
       {/* Mobile Menu */}
-      {isMobileMenuOpen && <div className="lg:hidden border-b bg-background">
-          <nav className="container mx-auto px-4 py-4 space-y-4">
-            <a href="/collections/shop" className="block font-medium text-sm">Shop</a>
-            <a href="/collections/new-arrivals" className="block font-medium text-sm">New Arrivals</a>
-            <a href="/collections/best-sellers" className="block font-medium text-sm">Best Sellers</a>
-            <a href="/collections" className="block font-medium text-sm">Collections</a>
+      {isMobileMenuOpen && <div className="lg:hidden border-t bg-white shadow-lg">
+          <nav className="container mx-auto px-4 py-6 space-y-6">
+            {/* Shop Section */}
+            <div className="space-y-3">
+              <h3 className="text-sm font-semibold tracking-wide text-black">SHOP</h3>
+              <div className="grid grid-cols-2 gap-4">
+                {trendingProducts.slice(0, 4).map((product, idx) => (
+                  <div key={idx} onClick={() => { navigate(`/product/${product.id}`); setIsMobileMenuOpen(false); }} className="cursor-pointer">
+                    <div className="aspect-square overflow-hidden bg-gray-50 rounded mb-2">
+                      <img src={product.image_url} alt={product.name} className="w-full h-full object-cover" />
+                    </div>
+                    <h4 className="text-xs font-medium text-black line-clamp-2">{product.name}</h4>
+                    <p className="text-xs font-bold text-black">{product.price}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+            
+            {/* New Arrivals Section */}
+            <div className="space-y-3 border-t pt-6">
+              <h3 className="text-sm font-semibold tracking-wide text-black">NEW ARRIVALS</h3>
+              <div className="grid grid-cols-2 gap-4">
+                {newArrivals.slice(0, 4).map((product, idx) => (
+                  <div key={idx} onClick={() => { navigate(`/product/${product.id}`); setIsMobileMenuOpen(false); }} className="cursor-pointer">
+                    <div className="aspect-square overflow-hidden bg-gray-50 rounded mb-2">
+                      <img src={product.image_url} alt={product.name} className="w-full h-full object-cover" />
+                    </div>
+                    <h4 className="text-xs font-medium text-black line-clamp-2">{product.name}</h4>
+                    <p className="text-xs font-bold text-black">{product.price}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Best Sellers Section */}
+            <div className="space-y-3 border-t pt-6">
+              <h3 className="text-sm font-semibold tracking-wide text-black">BEST SELLERS</h3>
+              <div className="grid grid-cols-2 gap-4">
+                {bestSellers.slice(0, 4).map((product, idx) => (
+                  <div key={idx} onClick={() => { navigate(`/product/${product.id}`); setIsMobileMenuOpen(false); }} className="cursor-pointer">
+                    <div className="aspect-square overflow-hidden bg-gray-50 rounded mb-2">
+                      <img src={product.image_url} alt={product.name} className="w-full h-full object-cover" />
+                    </div>
+                    <h4 className="text-xs font-medium text-black line-clamp-2">{product.name}</h4>
+                    <p className="text-xs font-bold text-black">{product.price}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Collections Section */}
+            <div className="space-y-3 border-t pt-6">
+              <h3 className="text-sm font-semibold tracking-wide text-black">COLLECTIONS</h3>
+              <div className="grid grid-cols-2 gap-4">
+                {collections.slice(0, 4).map((product, idx) => (
+                  <div key={idx} onClick={() => { navigate(`/product/${product.id}`); setIsMobileMenuOpen(false); }} className="cursor-pointer">
+                    <div className="aspect-square overflow-hidden bg-gray-50 rounded mb-2">
+                      <img src={product.image_url} alt={product.name} className="w-full h-full object-cover" />
+                    </div>
+                    <h4 className="text-xs font-medium text-black line-clamp-2">{product.name}</h4>
+                    <p className="text-xs font-bold text-black">{product.price}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
           </nav>
         </div>}
     </header>;

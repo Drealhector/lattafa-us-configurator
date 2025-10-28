@@ -27,12 +27,8 @@ export const CartSheet = ({ open, onOpenChange }: CartSheetProps) => {
       if (error) throw error;
 
       if (data?.url) {
-        // Open checkout in new tab
-        window.open(data.url, '_blank');
-        toast({
-          title: "Redirecting to checkout",
-          description: "Opening secure payment page in new tab",
-        });
+        // Redirect to checkout in same tab
+        window.location.href = data.url;
       }
     } catch (error: any) {
       console.error('Checkout error:', error);

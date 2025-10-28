@@ -1,10 +1,7 @@
-import { X, ShoppingBag, Trash2 } from "lucide-react";
+import { ShoppingBag, Trash2 } from "lucide-react";
 import { Button } from "./ui/button";
 import { useCart } from "@/contexts/CartContext";
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from "./ui/sheet";
-import { supabase } from "@/integrations/supabase/client";
-import { useToast } from "@/hooks/use-toast";
-import { useState } from "react";
 
 interface CartSheetProps {
   open: boolean;
@@ -12,34 +9,11 @@ interface CartSheetProps {
 }
 
 export const CartSheet = ({ open, onOpenChange }: CartSheetProps) => {
-  const { items, removeItem, updateQuantity, itemCount, total, clearCart } = useCart();
-  const { toast } = useToast();
-  const [isCheckingOut, setIsCheckingOut] = useState(false);
+  const { items, removeItem, updateQuantity, itemCount, total } = useCart();
 
-  const handleCheckout = async () => {
-    setIsCheckingOut(true);
-    
-    try {
-      const { data, error } = await supabase.functions.invoke('create-checkout', {
-        body: { items }
-      });
-
-      if (error) throw error;
-
-      if (data?.url) {
-        // Redirect to checkout in same tab
-        window.location.href = data.url;
-      }
-    } catch (error: any) {
-      console.error('Checkout error:', error);
-      toast({
-        title: "Checkout failed",
-        description: error.message || "Please try again",
-        variant: "destructive",
-      });
-    } finally {
-      setIsCheckingOut(false);
-    }
+  const handleCheckout = () => {
+    onOpenChange(false);
+    window.location.href = '/checkout';
   };
 
   return (
@@ -113,11 +87,10 @@ export const CartSheet = ({ open, onOpenChange }: CartSheetProps) => {
                 </div>
                 <Button
                   onClick={handleCheckout}
-                  disabled={isCheckingOut}
                   className="w-full"
                   size="lg"
                 >
-                  {isCheckingOut ? "Processing..." : "Proceed to Checkout"}
+                  Proceed to Checkout
                 </Button>
                 <p className="text-xs text-center text-gray-500">
                   Secure checkout powered by Stripe
